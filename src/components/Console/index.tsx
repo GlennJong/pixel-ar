@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import './style.css';
+import './style2.css';
 // import { EventBus } from '../EventBus';
 
-const Console = ({ children }: { children: React.ReactNode }) => {
+const Console = ({ onClickA, onClickB, onClickDirection, onClickSelect, onClickStart, children }: { children: React.ReactNode }) => {
   const [ isFilterOpen, setIsFilterOpen ] = useState(false);
   
   return (
@@ -17,40 +17,50 @@ const Console = ({ children }: { children: React.ReactNode }) => {
             </div>
           </div>
         </div>
-        <div className="buttons middle">
+        <div className="controller">
+          <div className="buttons middle" style={{
+            position: 'relative',
+            zIndex: '1'
+          }}>
 
-          <div className="direction">
-            <div className="direction-btn-wrapper top">
-              <button className="direction-btn top" onClick={() => {}}></button>
+            <div className="direction">
+              <div className="direction-btn-wrapper top">
+                <button className="direction-btn top" onClick={() => {}}></button>
+              </div>
+              <div className="direction-btn-wrapper right">
+                <button className="direction-btn right" onClick={() => {}}></button>
+              </div>
+              <div className="direction-btn-wrapper bottom">
+                <button className="direction-btn bottom" onClick={() => {}}></button>
+              </div>
+              <div className="direction-btn-wrapper left">
+                <button className="direction-btn left" onClick={() => {}}></button>
+              </div>
             </div>
-            <div className="direction-btn-wrapper right">
-              <button className="direction-btn right" onClick={() => {}}></button>
-            </div>
-            <div className="direction-btn-wrapper bottom">
-              <button className="direction-btn bottom" onClick={() => {}}></button>
-            </div>
-            <div className="direction-btn-wrapper left">
-              <button className="direction-btn left" onClick={() => {}}></button>
-            </div>
-          </div>
 
-          <div className="selection">
-            <div className="circle-btn-wrapper">
-              <button className="circle-btn" onClick={() => {}}>
-              </button>
-            </div>
-            <div className="circle-btn-wrapper">
-              <button className="circle-btn" onClick={() => {}}>
-              </button>
+            <div className="selection">
+              <div className="circle-btn-wrapper">
+                <button className="circle-btn" onClick={() => {}}>
+                </button>
+              </div>
+              <div className="circle-btn-wrapper">
+                <button className="circle-btn" onClick={() => {}}>
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="buttons bottom">
-          <div className="circle-btn-wrapper">
-            <button className="circle-btn special" onClick={() => setIsFilterOpen(!isFilterOpen)}></button>
-          </div>
-          <div className="circle-btn-wrapper">
-            <button className="circle-btn special" onClick={() => setIsFilterOpen(!isFilterOpen)}></button>
+          <div className="buttons bottom" style={{
+            position: 'relative',
+            zIndex: '1'
+          }}>
+            <div className="circle-btn-wrapper">
+              <button className="circle-btn special" onClick={() => {
+                onClickSelect();
+              }}></button>
+            </div>
+            <div className="circle-btn-wrapper">
+              <button className="circle-btn special" onClick={() => setIsFilterOpen(!isFilterOpen)}></button>
+            </div>
           </div>
         </div>
       </div>

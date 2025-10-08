@@ -11,8 +11,21 @@ const ARScene = ({ objectId }: { objectId: string}) => {
   useEffect(() => {
     if (!containerRef.current) return;
 
+    const uiAttrs = [
+      'uiLoading:no',
+      'uiScanning:#example-scanning-overlay;'
+    ];
+
+    const sensitiveAttrs = [
+      'autoStart:true',
+      'filterMinCF:0.001',
+      'missTolerance:20',
+      'filterBeta:20',
+      'warmupTolerance:5'
+    ]
+
     const arSceneHTML = `
-      <a-scene filter-min-cf="0.0001" filter-beta="50" mindar-image="imageTargetSrc: ${mindAssetUrl};" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+      <a-scene mindar-image="imageTargetSrc:${mindAssetUrl}; ${[...uiAttrs, ...sensitiveAttrs].join(';')}" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
         <a-assets>
           <img id="card" src="${targetAssetUrl}" />
         </a-assets>
@@ -20,7 +33,7 @@ const ARScene = ({ objectId }: { objectId: string}) => {
         <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
         <a-entity mindar-image-target="targetIndex: 0">
-          <a-plane src="#card" position="0 0 0" height="0.552" width="1" rotation="0 0 90"></a-plane>
+          <a-image src="#card" position="0 0.3 0" height="1" width="1" rotation="90 0 0"></a-plane>
         </a-entity>
       </a-scene>
     `;
@@ -45,7 +58,12 @@ const ARScene = ({ objectId }: { objectId: string}) => {
     };
   }, [objectId, targetAssetUrl]);
 
-  return <div ref={containerRef} className="ar-container" style={{ width: '100vw', height: '100vh' }} />;
+  return (
+    <>
+      <div id="example-scanning-overlay" className="hidden"></div>
+      <div ref={containerRef} className="ar-container" style={{ width: '100%', height: '100%' }}></div>
+    </>
+  );
 };
 
 export default ARScene;

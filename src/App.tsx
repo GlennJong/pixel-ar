@@ -1,19 +1,31 @@
+import { useState } from 'react'
 import Console from '@/components/Console'
+import ARScene from '@/components/ARScene'
 import './App.css'
-// import ARScene from '@/components/ARScene'
 
 function App() {
+  const [ isExtendAR, setIsExtendAR ] = useState(false);
   return (
     <>
-      <Console>
+    { isExtendAR ?
+      <div style={{
+        width: '100vw',
+        height: '100vh'
+      }}>
+        <ARScene objectId={"example"} />
+      </div>
+      :
+      <Console
+        onClickSelect={() => setIsExtendAR(!isExtendAR)}
+      >
         <div style={{
-          width: 'calc(72vw)',
-          height: 'calc(72vw)'
+          width: '100vw',
+          height: '100vw'
         }}>
-          content here
+          <ARScene objectId={"example"} />
         </div>
       </Console>
-      {/* <ARScene objectId={"example"} /> */}
+    }
     </>
   )
 }
