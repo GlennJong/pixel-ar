@@ -1,10 +1,19 @@
+import Console from '@/components/Console'
 import './App.css'
-import ARScene from './components/ARScene'
+// import ARScene from '@/components/ARScene'
 
 function App() {
   return (
     <>
-      <ARScene objectId={"example"} />
+      <Console>
+        <div style={{
+          width: 'calc(72vw)',
+          height: 'calc(72vw)'
+        }}>
+          content here
+        </div>
+      </Console>
+      {/* <ARScene objectId={"example"} /> */}
     </>
   )
 }
