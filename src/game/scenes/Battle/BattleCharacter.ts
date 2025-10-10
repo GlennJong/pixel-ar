@@ -93,7 +93,6 @@ export default class BattleCharacter extends Character {
 
     super(scene, key, characterProps);
 
-
     // define role
     this.role = role;
 
@@ -199,10 +198,10 @@ export default class BattleCharacter extends Character {
     await this.board!.setHP(this.hp.current);
   };
 
-  public runReaction(
+  public async runReaction(
     reaction = 'damage',
     value: number,
-  ): TRunReaction | undefined {
+  ): Promise<TRunReaction | undefined> {
     const currentReaction = this.reactions![reaction];
 
     if (!currentReaction) return;
@@ -214,9 +213,9 @@ export default class BattleCharacter extends Character {
       this.handlePlayKeyFrameAnimation(animation.key);
     }
     if (animation === 'damage') {
-      this.handlePlayDamageReaction(value);
+      await this.handlePlayDamageReaction(value);
     } else if (animation === 'recover') {
-      this.handlePlayRecoverReaction(value);
+      await this.handlePlayRecoverReaction(value);
     }
 
     return {

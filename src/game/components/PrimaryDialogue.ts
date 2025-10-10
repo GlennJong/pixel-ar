@@ -125,17 +125,17 @@ export class PrimaryDialogue extends Phaser.GameObjects.Container {
   }
 
   private setShowDialogueBox() {
-    this.portraitBackground!.setVisible(true);
-    this.portrait!.setVisible(true);
-    this.textboxBackground!.setVisible(true);
-    this.textbox!.setVisible(true);
+    this.portraitBackground?.setVisible(true);
+    this.portrait?.setVisible(true);
+    this.textboxBackground?.setVisible(true);
+    this.textbox?.setVisible(true);
   }
 
   private setHideDialogueBox() {
-    this.portraitBackground!.setVisible(false);
-    this.portrait!.setVisible(false);
-    this.textboxBackground!.setVisible(false);
-    this.textbox!.setVisible(false);
+    this.portraitBackground?.setVisible(false);
+    this.portrait?.setVisible(false);
+    this.textboxBackground?.setVisible(false);
+    this.textbox?.setVisible(false);
     if (this.dialogueTimer) {
       this.dialogueTimer.remove();
       this.dialogueTimer = null;
@@ -224,7 +224,7 @@ export class PrimaryDialogue extends Phaser.GameObjects.Container {
 
     this.currentDialogueSegment = this.dialoguePages[this.currentPageIndex];
     this.currentLetterIndex = 0;
-    this.textbox!.setText('');
+    this.textbox?.setText('');
     this.dialogueFinishedTypingCurrentPage = false;
 
     this.dialogueTimer = this.scene.time.addEvent({
@@ -237,10 +237,10 @@ export class PrimaryDialogue extends Phaser.GameObjects.Container {
 
   private handleTypeLetter() {
     if (this.currentLetterIndex < this.currentDialogueSegment.length) {
-      this.textbox!.setText(this.currentDialogueSegment.substring(0, this.currentLetterIndex + 1)); // 變更為 this.textbox
+      this.textbox?.setText(this.currentDialogueSegment.substring(0, this.currentLetterIndex + 1)); // 變更為 this.textbox
       this.currentLetterIndex++;
     } else {
-      this.dialogueTimer!.remove();
+      this.dialogueTimer?.remove();
       this.dialogueFinishedTypingCurrentPage = true;
 
       if (this.autoPageSwitchDelay === 0) return; // 新增的判斷，如果延遲為0則不自動換頁

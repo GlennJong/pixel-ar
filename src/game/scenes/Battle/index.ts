@@ -4,12 +4,37 @@ import { PrimaryDialogue } from '../../components/PrimaryDialogue';
 import BattleCharacter from './BattleCharacter';
 import { sceneStarter } from '../../components/CircleSceneTransition';
 import { originalHeight, originalWidth } from '../../constants';
-import { getStoreState } from '@/game/store';
 import { Menu } from './Menu';
 import { KeyboardHandler } from '@/game/handlers/KeyboardHander';
 import { EventBus } from '@/game/EventBus';
 
+
+const introduction: Record<string, string> = {
+  default: '就是個沙包',
+  beibei: '她是來自貞貞俱樂部的貝貝！\n創作者是實況主貞尼鹹粥！',
+  shangshang: '他是來自貞貞俱樂部的上上！\n創作者是實況主貞尼鹹粥！',
+  jennie: '他是實況主貞尼鹹粥！最喜歡吃拉麵！',
+  currycat: '他是咖哩貓！是這個小遊戲的作者！\n在這個遊戲發生的所有bug都要怪他！',
+  maoramei: '貓辣妹',
+
+  bbb: '他是最喜歡數碼寶貝的插畫家兼實況主BBB！是貞貞俱樂部的',
+  daradara: '她是插畫家兼實況主橙踏青！',
+  xiaodie: '她是插畫家兼實況主橙踏青！',
+  lilia: '哩哩',
+  pachinko: '啊爬',
+  quai: '啊快',
+  p13p04: '問問',
+  veg: '她們是龐淇和小幽靈們！創作者是實況主兼插畫家R菜！',
+  touching: '她是插畫家兼實況主橙踏青！',
+  ai4: 'ㄐㄎ',
+  
+}
+
+const promoteContent = '喜歡這個小遊戲嗎？\n快去追蹤貞尼鹹粥！！\n加入貞貞俱樂部！！'
+
+
 export default class Battle extends Scene {
+  opponentName: string = 'default';
   background?: Phaser.GameObjects.Rectangle;
   self?: BattleCharacter;
   opponent?: BattleCharacter;
@@ -32,8 +57,10 @@ export default class Battle extends Scene {
     .setDepth(0)
     .setOrigin(0);
 
-    const transmit = getStoreState('global.transmit') || {};
-    const opponent = transmit.opponent || 'beibei';
+    const params = new URLSearchParams(document.location.search);
+    
+    const opponent = params.get('opponent') || 'default';
+    this.opponentName = opponent;
 
     // init characters
     this.opponent = new BattleCharacter(
@@ -98,66 +125,69 @@ export default class Battle extends Scene {
     this.keyboardHandler?.update();
   }
 
-  private async applyAttack(from : 'self' | 'opponent') {
-    // action movement
-    const actionCharacter = from === 'self' ? this.self : this.opponent;
+  private async applyAttackTurn() {
 
-    const currentAction = actionCharacter!.getRandomAction();
-    
-    const actionResult = actionCharacter!.runAction(currentAction);
-    if (!actionResult) return;
-    
-    const { effect, dialog: actionDialog } = actionResult;
-    
-    if (!effect) return;
-
-    const { type, target, value } = effect;
-    await this.dialogue!.runDialogue(actionDialog);
-
-    // reaction movement
-    const sufferCharacter = target === 'self' ? this.self : this.opponent;
-    const reactionResult = sufferCharacter!.runReaction(type, value || 0);
-
-    if (!reactionResult) return;
-    const { dialog: sufferDialog, isDead } = reactionResult;
-    await this.dialogue!.runDialogue(sufferDialog);
-
-    if (isDead) {
-      const winResult = actionCharacter!.runResult('win');
-      if (!winResult) return;
-      const { dialog: winnerDialog } = winResult;
-      await this.dialogue!.runDialogue(winnerDialog);
-
-      sufferCharacter!.runResult('lose');
-      const loseResult = sufferCharacter!.runResult('lose');
-
+    const turns = ['self', 'opponent'];
+    for (let i = 0; i < turns.length; i++) {
+      const from = turns[i];
+      // action movement
+      const actionCharacter = from === 'self' ? this.self : this.opponent;
+  
+      const currentAction = actionCharacter!.getRandomAction();
       
-      if (!loseResult) return;
-      const { dialog: loserDialog } = loseResult;
-      await this.dialogue!.runDialogue(loserDialog);
-
-      this.handleFinishGame();
-      return;
+      const actionResult = actionCharacter!.runAction(currentAction);
+      if (!actionResult) return;
+      
+      const { effect, dialog: actionDialog } = actionResult;
+      
+      if (!effect) return;
+  
+      const { type, target, value } = effect;
+      await this.dialogue!.runDialogue(actionDialog);
+  
+      // reaction movement
+      const sufferCharacter = target === 'self' ? this.self : this.opponent;
+      const reactionResult = await sufferCharacter!.runReaction(type, value || 0);
+  
+      if (!reactionResult) return;
+      const { dialog: sufferDialog, isDead } = reactionResult;
+      await this.dialogue!.runDialogue(sufferDialog);
+  
+      
+      if (isDead) {
+        const winResult = actionCharacter!.runResult('win');
+        if (!winResult) return;
+        const { dialog: winnerDialog } = winResult;
+        await this.dialogue!.runDialogue(winnerDialog);
+  
+        sufferCharacter!.runResult('lose');
+        const loseResult = sufferCharacter!.runResult('lose');
+  
+        
+        if (!loseResult) return;
+        const { dialog: loserDialog } = loseResult;
+        await this.dialogue!.runDialogue(loserDialog);
+  
+        this.handleFinishGame();
+        return;
+      }
+      else {
+        this.handleSelectAction();
+      }
     }
-    else {
-      this.handleSelectAction();
-    }
+    
   }
 
   private async applyTalking() {
-
-    // const selfTalkingDialog = this.self!.runTalking();
     await this.dialogue!.runDialogue([{
       portrait: 'battle_afk_self_face_normal',
-      text: '她是來自貞貞俱樂部的貝貝！\n創作者是實況主貞尼鹹粥！',
+      text: introduction[this.opponentName],
     }]);
 
     this.handleSelectAction();
   }
 
   private async applyARTalking() {
-
-    // const selfTalkingDialog = this.self!.runTalking();
     await this.dialogue!.runDialogue([
       {
         portrait: 'battle_afk_self_face_normal',
@@ -184,8 +214,7 @@ export default class Battle extends Scene {
       if (action) {
         this.menu?.hideMenu();
         if (action === '攻擊') {
-          await this.applyAttack('self');
-          await this.applyAttack('opponent');
+          await this.applyAttackTurn();
         }
         else if (action === '你是誰') {
           await this.applyTalking();
@@ -216,7 +245,7 @@ export default class Battle extends Scene {
   private async handleFinishGame() {
     await this.dialogue!.runDialogue([{
       portrait: 'battle_afk_self_face_normal',
-      text: '喜歡這個小遊戲嗎！快去追蹤貞尼鹹粥！',
+      text: promoteContent,
     }])
   }
 
