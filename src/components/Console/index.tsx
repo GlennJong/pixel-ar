@@ -2,7 +2,12 @@ import { useState } from 'react';
 import './style2.css';
 // import { EventBus } from '../EventBus';
 
-const Console = ({ onClickA, onClickB, onClickDirection, onClickSelect, onClickStart, children }: { children: React.ReactNode }) => {
+type ConsoleProps = {
+  onClick: (key: string) => void
+  children: React.ReactNode
+}
+
+const Console = ({ onClick, children }: ConsoleProps) => {
   const [ isFilterOpen, setIsFilterOpen ] = useState(false);
   
   return (
@@ -25,26 +30,38 @@ const Console = ({ onClickA, onClickB, onClickDirection, onClickSelect, onClickS
 
             <div className="direction">
               <div className="direction-btn-wrapper top">
-                <button className="direction-btn top" onClick={() => {}}></button>
+                <button className="direction-btn top" onClick={() => {
+                  onClick('up')
+                }}></button>
               </div>
               <div className="direction-btn-wrapper right">
-                <button className="direction-btn right" onClick={() => {}}></button>
+                <button className="direction-btn right" onClick={() => {
+                  onClick('right')
+                }}></button>
               </div>
               <div className="direction-btn-wrapper bottom">
-                <button className="direction-btn bottom" onClick={() => {}}></button>
+                <button className="direction-btn bottom" onClick={() => {
+                  onClick('down')
+                }}></button>
               </div>
               <div className="direction-btn-wrapper left">
-                <button className="direction-btn left" onClick={() => {}}></button>
+                <button className="direction-btn left" onClick={() => {
+                  onClick('left')
+                }}></button>
               </div>
             </div>
 
             <div className="selection">
               <div className="circle-btn-wrapper">
-                <button className="circle-btn" onClick={() => {}}>
+                <button className="circle-btn" onClick={() => {
+                  onClick('B')
+                }}>
                 </button>
               </div>
               <div className="circle-btn-wrapper">
-                <button className="circle-btn" onClick={() => {}}>
+                <button className="circle-btn" onClick={() => {
+                  onClick('A')
+                }}>
                 </button>
               </div>
             </div>
@@ -55,11 +72,14 @@ const Console = ({ onClickA, onClickB, onClickDirection, onClickSelect, onClickS
           }}>
             <div className="circle-btn-wrapper">
               <button className="circle-btn special" onClick={() => {
-                onClickSelect();
+                onClick('select');
               }}></button>
             </div>
             <div className="circle-btn-wrapper">
-              <button className="circle-btn special" onClick={() => setIsFilterOpen(!isFilterOpen)}></button>
+              <button className="circle-btn special" onClick={() => {
+                onClick('start');
+                setIsFilterOpen(!isFilterOpen)
+              }}></button>
             </div>
           </div>
         </div>

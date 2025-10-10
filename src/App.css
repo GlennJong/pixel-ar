@@ -11,6 +11,9 @@ html, body {
   margin: 0;
   padding: 0;
   background: #6441a5;
+  width: 100vw;
+  height: calc(var(--vh, 1vh) * 100);
+  overflow: hidden;
 }
 
 @media (prefers-reduced-motion: no-preference) {
