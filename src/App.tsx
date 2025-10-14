@@ -1,25 +1,22 @@
-import { useState } from 'react'
 import Console from '@/components/Console'
-import ARScene from '@/components/ARScene'
+import Wrapper from '@/components/Wrapper';
+import GameScene from '@/components/GameScene';
+import { EventBus } from '@/game/EventBus';
 import './App.css'
-import GameScene from './components/GameScene';
-import { EventBus } from './game/EventBus';
-import Wrapper from './components/Wrapper';
+import { useEffect, useState } from 'react';
 
 function App() {
-  const [ isExtendAR, setIsExtendAR ] = useState(false);
+  const [inputs, setInputs] = useState<string[]>([]);
 
-
+  useEffect(() => {
+    if (inputs.length < 10) return;
+    if (inputs.join('') === '^^vv<><>BA') {
+      // EventBus.emit('game-secret-mode');
+    }
+  }, [inputs])
+  
   return (
     <Wrapper>
-    { isExtendAR ?
-      <div style={{
-        width: '100vw',
-        height: '100vh'
-      }}>
-        <ARScene objectId={"example"} />
-      </div>
-      :
       <div style={{
         width: '100%',
         height: '100%',
@@ -27,19 +24,27 @@ function App() {
       }}>
         <Console
           onClick={(key) => {
-            if (key === 'select') {
-              setIsExtendAR(!isExtendAR);
-            }
-            else if (key === 'up') {
+            if (key === 'up') {
               EventBus.emit('game-up-keydown');
+              setInputs([...inputs, '^'].slice(-10));
             }
             else if (key === 'down') {
               EventBus.emit('game-down-keydown');
+              setInputs([...inputs, 'v'].slice(-10));
+            }
+            else if (key === 'left') {
+              setInputs([...inputs, '<'].slice(-10));
+            }
+            else if (key === 'right') {
+              setInputs([...inputs, '>'].slice(-10));
             }
             else if (key === 'A') {
               EventBus.emit('game-select-keydown');
+              setInputs([...inputs, 'A'].slice(-10));
             }
-
+            else if (key === 'B') {
+              setInputs([...inputs, 'B'].slice(-10));
+            }
           }}
         >
           <div style={{
@@ -50,7 +55,6 @@ function App() {
           </div>
         </Console>
       </div>
-    }
     </Wrapper>
   )
 }

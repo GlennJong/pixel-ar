@@ -2,7 +2,7 @@ import Phaser, { Scene } from 'phaser';
 import { PrimaryDialogue } from '../../components/PrimaryDialogue';
 
 import BattleCharacter from './BattleCharacter';
-import { sceneStarter } from '../../components/CircleSceneTransition';
+import { sceneStarter, sceneFinisher } from '../../components/CircleSceneTransition';
 import { originalHeight, originalWidth } from '../../constants';
 import { Menu } from './Menu';
 import { KeyboardHandler } from '@/game/handlers/KeyboardHander';
@@ -27,11 +27,19 @@ const introduction: Record<string, string> = {
   veg: '她們是龐淇和小幽靈們！創作者是實況主兼插畫家R菜！',
   touching: '她是插畫家兼實況主橙踏青！',
   ai4: 'ㄐㄎ',
-  
 }
 
-const promoteContent = '喜歡這個小遊戲嗎？\n快去追蹤貞尼鹹粥！！\n加入貞貞俱樂部！！'
+const promoteContent = '喜歡這個小遊戲嗎？\n歡迎加入貞貞俱樂部！'
 
+const actionOptions = ['攻擊', '恢復', '你是誰'];
+const finishingOptions = ['繼續戰鬥', '關於遊戲', '離開'];
+const battleListOptions = [
+  { text: '貞尼鹹粥', value: 'jennie' },
+  { text: '貝貝', value: 'beibei' },
+  { text: '上上', value: 'shangshang' },
+  { text: '貓辣妹', value: 'maoramei' },
+  { text: '咖哩貓', value: 'currycat' },
+];
 
 export default class Battle extends Scene {
   opponentName: string = 'default';
@@ -51,21 +59,26 @@ export default class Battle extends Scene {
   }
 
   create() {
-    
     // background
     this.background = this.add.rectangle(0, 0, originalWidth, originalHeight, 0xeeeeee)
     .setDepth(0)
     .setOrigin(0);
 
-    const params = new URLSearchParams(document.location.search);
-    
-    const opponent = params.get('opponent') || 'default';
-    this.opponentName = opponent;
+    // 支援 restart 傳入 data.opponentName，否則 fallback 到 URL params
+    let opponentName = 'default';
+    const data = this.scene.settings.data as { opponentName?: string } | undefined;
+    if (data && typeof data.opponentName === 'string') {
+      opponentName = data.opponentName;
+    } else {
+      const params = new URLSearchParams(document.location.search);
+      opponentName = params.get('opponent') || 'default';
+    }
+    this.opponentName = opponentName;
 
     // init characters
     this.opponent = new BattleCharacter(
       this,
-      `battle_${opponent}_opponent`,
+      `battle_${opponentName}_opponent`,
       'opponent',
     );
     this.opponent.setDepth(1);
@@ -79,7 +92,6 @@ export default class Battle extends Scene {
     this.self.setDepth(1);
     this.self.board?.setDepth(1);
 
-
     this.keyboardHandler = new KeyboardHandler(this, {
       onUp: () => this.handleControlButton('up'),
       onDown: () => this.handleControlButton('down'),
@@ -89,30 +101,23 @@ export default class Battle extends Scene {
     EventBus.on('game-down-keydown', () => this.handleControlButton('down'))
     EventBus.on('game-select-keydown', () => this.handleControlButton('space'))
     
-
     // default hide status board
     this.self.hideBoard();
     this.opponent.hideBoard();
-
 
     // init dialogue
     this.dialogue = new PrimaryDialogue(this);
     this.dialogue.initDialogue();
     this.dialogue.setDepth(2);
 
-
     // init Menu
     this.menu = new Menu(this, {
-      actions: [
-        '攻擊',
-        '你是誰',
-        'AR模式',
-      ]
+      actions: [...actionOptions]
     });
     this.menu.init();
     this.menu.hideMenu();
     this.menu.setDepth(3);
-
+    
     sceneStarter(this);
     this.handleStartGameScene();
 
@@ -126,22 +131,18 @@ export default class Battle extends Scene {
   }
 
   private async applyAttackTurn() {
-
     const turns = ['self', 'opponent'];
     for (let i = 0; i < turns.length; i++) {
       const from = turns[i];
       // action movement
       const actionCharacter = from === 'self' ? this.self : this.opponent;
-  
       const currentAction = actionCharacter!.getRandomAction();
-      
       const actionResult = actionCharacter!.runAction(currentAction);
+
       if (!actionResult) return;
-      
       const { effect, dialog: actionDialog } = actionResult;
       
       if (!effect) return;
-  
       const { type, target, value } = effect;
       await this.dialogue!.runDialogue(actionDialog);
   
@@ -177,6 +178,28 @@ export default class Battle extends Scene {
     }
     
   }
+  private async applyRecoverTurn() {
+    const actionCharacter = this.self;
+    const currentAction = actionCharacter!.getRecoverAction();
+    const actionResult = actionCharacter!.runAction(currentAction);
+
+    if (!actionResult) return;
+    const { effect, dialog: actionDialog } = actionResult;
+    
+    if (!effect) return;
+    const { type, target, value } = effect;
+    await this.dialogue!.runDialogue(actionDialog);
+
+    // reaction movement
+    const sufferCharacter = target === 'self' ? this.self : this.opponent;
+    const reactionResult = await sufferCharacter!.runReaction(type, value || 0);
+
+    if (!reactionResult) return;
+    const { dialog: sufferDialog } = reactionResult;
+    await this.dialogue!.runDialogue(sufferDialog);
+
+    this.handleSelectAction();
+  }
 
   private async applyTalking() {
     await this.dialogue!.runDialogue([{
@@ -187,21 +210,15 @@ export default class Battle extends Scene {
     this.handleSelectAction();
   }
 
-  private async applyARTalking() {
-    await this.dialogue!.runDialogue([
-      {
-        portrait: 'battle_afk_self_face_normal',
-        text: '點擊下面AR按鈕後會進入AR模式！\n將鏡頭對準卡片上的圖案就可以看到角色喔！',
-      },
-      {
-        portrait: 'battle_afk_self_face_angry',
-        text: '但目前這只是beta功能！\n可能圖像會辨識不出來喔！',
-      }
-    ]);
+  private async continueGame() {
+    await this.dialogue!.runDialogue([{
+      portrait: 'battle_afk_self_face_normal',
+      text: '你要跟誰戰鬥呢？',
+    }]);
 
-    this.handleSelectAction();
+    this.menu?.setActions(battleListOptions.map(({ text }) => text));
+    this.menu?.showMenu();
   }
-  
 
   private async handleControlButton(key: 'up' | 'down' | 'space') {
     if (key === 'up') {
@@ -209,24 +226,52 @@ export default class Battle extends Scene {
     } else if (key === 'down') {
       this.menu?.nextAction();
     } else if (key === 'space') {
-      const action = this.menu?.select();
-
-      if (action) {
+      const menuAction = this.menu?.select();
+      if (menuAction) {
         this.menu?.hideMenu();
-        if (action === '攻擊') {
+        if (menuAction === '攻擊') {
           await this.applyAttackTurn();
         }
-        else if (action === '你是誰') {
+        else if (menuAction === '恢復') {
+          await this.applyRecoverTurn();
+        }
+        else if (menuAction === '你是誰') {
           await this.applyTalking();
-          // 你是誰？
         }
-        else if (action === 'AR模式') {
-          await this.applyARTalking();
-          // 點擊下方按鈕，可以進入 AR 模式
+        else if (menuAction === '關於遊戲') {
+          await this.dialogue!.runDialogue([{
+            portrait: 'battle_afk_self_face_normal',
+            text: '這是咖哩貓做的貞貞俱樂部二創小遊戲\n滿足小小的想做遊戲的願望\n希望你有喜歡！',
+          }]);
+          this.menu?.showMenu();
         }
-
+        else if (menuAction === '離開') {
+          await this.dialogue!.runDialogue([{
+            portrait: 'battle_afk_self_face_normal',
+            text: '88888888',
+          }]);
+          sceneFinisher(this);
+        }
+        else if (menuAction === '繼續戰鬥') {
+          await this.continueGame();
+        }
+        else if (battleListOptions.map(({ text }) => text).includes(menuAction)) {
+          const result = battleListOptions.find(({ text }) => text === menuAction);
+          if (result) {
+            this.restartBattle(result.value);
+          }
+        }
       }
     }
+  }
+
+  private async restartBattle(opponentName: string) {
+    await this.dialogue?.runDialogue([{
+      portrait: 'battle_afk_self_face_angry',
+      text: '繼續戰鬥！',
+    }]);
+    await sceneFinisher(this);
+    this.scene.restart({ opponentName });
   }
 
   private async handleStartGameScene() {
@@ -239,6 +284,8 @@ export default class Battle extends Scene {
       portrait: 'battle_afk_self_face_normal',
       text: '要做什麼呢？',
     }]);
+    // this.menu?.setActions(battleListOptions.map(({ text }) => text));
+    // this.menu?.setActions(finishingOptions);
     this.menu?.showMenu();
   }
 
@@ -247,6 +294,8 @@ export default class Battle extends Scene {
       portrait: 'battle_afk_self_face_normal',
       text: promoteContent,
     }])
+    this.menu?.setActions(finishingOptions);
+    this.menu?.showMenu();
   }
 
   private async openingCharacterMovement() {
@@ -283,5 +332,8 @@ export default class Battle extends Scene {
     this.keyboardHandler?.destroy();
     this.opponent!.destroy();
     this.self!.destroy();
+    EventBus.off('game-up-keydown')
+    EventBus.off('game-down-keydown')
+    EventBus.off('game-select-keydown')
   }
 }

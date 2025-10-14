@@ -206,7 +206,7 @@
         "effect": {
           "type": "recover",
           "target": "opponent",
-          "value": 20
+          "value": 40
         }
       }
     },
@@ -1076,6 +1076,26 @@
           "target": "opponent",
           "value": 40
         }
+      },
+      "recover": {
+        "animation": "recover",
+        "priority": 1,
+        "dialogues": [
+          {
+            "dialog": [
+              {
+                "portrait": "battle_afk_self_face_normal",
+                "text": "恢復血量！"
+              }
+            ],
+            "priority": 2
+          }
+        ],
+        "effect": {
+          "type": "recover",
+          "target": "self",
+          "value": 40
+        }
       }
     },
     "reactions": {
@@ -1100,7 +1120,16 @@
             "dialog": [
               {
                 "portrait": "battle_afk_self_face_normal",
-                "text": "謝謝尼"
+                "text": "精神百倍！"
+              }
+            ],
+            "priority": 2
+          },
+          {
+            "dialog": [
+              {
+                "portrait": "battle_afk_self_face_normal",
+                "text": "神清氣爽！"
               }
             ],
             "priority": 2

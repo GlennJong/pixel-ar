@@ -1,3 +1,4 @@
+
 import Phaser from "phaser";
 import { runTween } from "../utils/runTween";
 
@@ -26,6 +27,14 @@ export async function sceneStarter(scene: Phaser.Scene) {
 
   cover.init();
   await cover.runUnmask();
+}
+
+export async function sceneFinisher(scene: Phaser.Scene) {
+  const cover = new CircleScreenTransition(scene);
+  cover.init();
+  
+  cover.max();
+  await cover.runMask();
 }
 
 class CircleScreenTransition extends Phaser.GameObjects.Container {

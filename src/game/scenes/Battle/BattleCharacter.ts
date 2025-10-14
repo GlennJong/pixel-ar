@@ -191,7 +191,7 @@ export default class BattleCharacter extends Character {
     const originX = this.character.x;
     const originY = this.character.y;
     this.character.setPosition(this.character.x + this.character.width/2, this.character.y + this.character.height/2);
-    await runTween(this.character, { scale: 1.15, yoyo: 1 }, 200);
+    await runTween(this.character, { scale: 1.1, yoyo: 1 }, 200);
     this.character.setPosition(originX, originY);
     this.character.setOrigin(0);
     this.character.setScale(1);
@@ -279,6 +279,12 @@ export default class BattleCharacter extends Character {
     );
 
     return selectedAction;
+  }
+
+  public getRecoverAction() {
+    if (!this.actions) return;
+    const allAction = Object.keys(this.actions);
+    return allAction.find(action => action === 'recover');
   }
 
   public showBoard() {
