@@ -13,8 +13,8 @@ const textFontSize = 10;
 const textBottomPadding = 2;
 const textFontResolution = 4;
 
-const playerNameY = -2;
-const barY = 10;
+// const playerNameY = -2;
+// const barY = 10;
 
 export type TStatusBoardProps = {
   name: string;

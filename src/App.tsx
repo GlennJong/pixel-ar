@@ -8,7 +8,6 @@ import Wrapper from './components/Wrapper';
 
 function App() {
   const [ isExtendAR, setIsExtendAR ] = useState(false);
-  const [ isEnableAR, setIsEnableAR ] = useState(false);
 
 
   return (
@@ -47,16 +46,11 @@ function App() {
             width: '100vw',
             height: '90vw'
           }}>
-            { isEnableAR ?
-              <ARScene objectId={"example"} />
-              :
-              <GameScene />
-            }
+            <GameScene />
           </div>
         </Console>
       </div>
     }
-    {/* <GameScene /> */}
     </Wrapper>
   )
 }

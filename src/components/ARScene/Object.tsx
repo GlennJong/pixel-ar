@@ -1,6 +1,6 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
-const Object = ({ targetAssetUrl }) => {
+const Object = ({ targetAssetUrl }: { targetAssetUrl: string}) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

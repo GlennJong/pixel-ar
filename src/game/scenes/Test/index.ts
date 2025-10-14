@@ -19,28 +19,28 @@ export default class TestScene extends Scene {
 
     this.dialogue = new PrimaryDialogue(this);
     this.dialogue.initDialogue();
-    const exampleDialogueData = [
-      {
-        "face": { "key": "avatar_hero", "frame": "" },
-        "text": "lorem ipsum dolor sit amet consectetur adipiscing elit"
-      }
-    ];
+    // const exampleDialogueData = [
+    //   {
+    //     "face": { "key": "avatar_hero", "frame": "" },
+    //     "text": "lorem ipsum dolor sit amet consectetur adipiscing elit"
+    //   }
+    // ];
 
     const padding = 4;
-    const background = this.make
-      .nineslice({
-        key: 'battle_board',
-        frame: 'background',
-        width: 64,
-        height: 20,
-        leftWidth: 4,
-        rightWidth: 4,
-        topHeight: 4,
-        bottomHeight: 4,
-        x: 10,
-        y: 10
-      })
-      .setOrigin(0);
+    // const background = this.make
+    //   .nineslice({
+    //     key: 'battle_board',
+    //     frame: 'background',
+    //     width: 64,
+    //     height: 20,
+    //     leftWidth: 4,
+    //     rightWidth: 4,
+    //     topHeight: 4,
+    //     bottomHeight: 4,
+    //     x: 10,
+    //     y: 10
+    //   })
+    //   .setOrigin(0);
 
     const hpBarHead = this.make.sprite({
       key: 'battle_board',
@@ -50,20 +50,20 @@ export default class TestScene extends Scene {
       
     }).setOrigin(0);
 
-    const hpFrame = this.make
-      .nineslice({
-        key: 'battle_board',
-        frame: 'bar-frame',
-        width: 40,
-        height: hpBarHead.height,
-        leftWidth: 2,
-        rightWidth: 2,
-        topHeight: 2,
-        bottomHeight: 2,
-        x: 10 + padding + hpBarHead.width,
-        y: 10 + padding
-      })
-      .setOrigin(0);
+    // const hpFrame = this.make
+    //   .nineslice({
+    //     key: 'battle_board',
+    //     frame: 'bar-frame',
+    //     width: 40,
+    //     height: hpBarHead.height,
+    //     leftWidth: 2,
+    //     rightWidth: 2,
+    //     topHeight: 2,
+    //     bottomHeight: 2,
+    //     x: 10 + padding + hpBarHead.width,
+    //     y: 10 + padding
+    //   })
+    //   .setOrigin(0);
     // this.add(background);
 
     const hpBar = this.make
