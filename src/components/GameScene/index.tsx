@@ -9,8 +9,8 @@ const GameScene = () => {
 
   useEffect(() => {
     gameCoreRef.current = StartGame('game-container');
-    gameCoreRef.current.canvas.style.width = '100vw';
-    gameCoreRef.current.canvas.style.height = '90vw';
+    gameCoreRef.current.canvas.style.width = '100%';
+    gameCoreRef.current.canvas.style.height = '100%';
     return () => {
       if (gameCoreRef.current) {
         gameCoreRef.current.destroy(true);
@@ -20,7 +20,17 @@ const GameScene = () => {
 
   
   return (
-    <div id="game-container"></div>
+    <div
+      id="game-container"
+      style={{
+        position: 'absolute',
+        top: '0',
+        left: '0',
+        background: '#fff',
+        width: '100%',
+        height: '100%',
+      }}
+    ></div>
   );
 }
 

@@ -102,7 +102,7 @@ export class StatusBoard extends Phaser.GameObjects.Container {
       .setOrigin(0);
 
     this.hpBarWidth = hpFrameWidth - hpBarHead.width / 2 - paddingX - 3;
-    hpBar.displayWidth = (this.hp.current / this.hp.max) * this.hpBarWidth;
+    hpBar.displayWidth = Math.floor((this.hp.current / this.hp.max) * this.hpBarWidth);
     this.hpBar = hpBar;
 
     this.add(hpFrame);
@@ -200,7 +200,7 @@ export class StatusBoard extends Phaser.GameObjects.Container {
 
       this.hp.current = Math.floor(point);
       this.hpBar.displayWidth =
-        (this.hp.current / this.hp.max) * this.hpBarWidth;
+        Math.floor((this.hp.current / this.hp.max) * this.hpBarWidth);
       // if (this.currentHpText) {
       //     this.currentHpText.setText(this.hp.toString());
       // }
@@ -208,7 +208,7 @@ export class StatusBoard extends Phaser.GameObjects.Container {
       if (total == count) {
         this.hp.current = to.hp;
         this.hpBar.displayWidth =
-          (this.hp.current / this.hp.max) * this.hpBarWidth;
+          Math.floor((this.hp.current / this.hp.max) * this.hpBarWidth);
         // this.currentHpText.setText(this.hp.toString());
 
         // reset after moved

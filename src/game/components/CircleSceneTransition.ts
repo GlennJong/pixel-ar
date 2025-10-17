@@ -47,7 +47,7 @@ class CircleScreenTransition extends Phaser.GameObjects.Container {
     const { zoom } = scene.scale;
     const { width, height } = scene.sys.game.canvas;
     
-    this.curcleMaxSize = Math.max(width * zoom, height * zoom);
+    this.curcleMaxSize = Math.max(width * zoom, height * zoom) * 1.1;
 
     const coverRect = scene.add
       .rectangle(0, 0, width * zoom, height * zoom, maskCoverColor)

@@ -51,7 +51,7 @@ const fullWidth = 160;
 
 const defaultCharacterPosition = {
   self: { x: 10, y: 70 },
-  opponent: { x: 96, y: 12 },
+  opponent: { x: 88, y: 12 },
 };
 
 const defaultStatusBoardPosition = {
@@ -187,14 +187,13 @@ export default class BattleCharacter extends Character {
   private handlePlayRecoverReaction = async (value: number) => {
     const result = Math.min(this.hp.max, this.hp.current + value);
     this.hp.current = result;
-    this.character.setOrigin(0.5);
-    const originX = this.character.x;
-    const originY = this.character.y;
-    this.character.setPosition(this.character.x + this.character.width/2, this.character.y + this.character.height/2);
-    await runTween(this.character, { scale: 1.1, yoyo: 1 }, 200);
-    this.character.setPosition(originX, originY);
-    this.character.setOrigin(0);
-    this.character.setScale(1);
+    await runTween(this.character,
+      { x: this.character.x -10,
+        y: this.character.y -10,
+        displayWidth: this.character.width + 20,
+        displayHeight: this.character.height + 20,
+        yoyo: 1
+      }, 200);
     await this.board!.setHP(this.hp.current);
   };
 

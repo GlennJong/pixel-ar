@@ -18,9 +18,12 @@ function App() {
   return (
     <Wrapper>
       <div style={{
+        maxWidth: '480px',
         width: '100%',
         height: '100%',
-        overflow: 'hidden'
+        margin: 'auto',
+        overflow: 'hidden',
+        boxShadow: '0 0 10px 0 rgba(0, 0, 0, 0.5)'
       }}>
         <Console
           onClick={(key) => {
@@ -48,10 +51,16 @@ function App() {
           }}
         >
           <div style={{
-            width: '100vw',
-            height: '90vw'
+            position: 'relative'
           }}>
-            <GameScene />
+            <div style={{
+              position: 'absolute',
+              width: '100%',
+              height: '0',
+              paddingBottom: '90%',
+            }}>
+              <GameScene />
+            </div>
           </div>
         </Console>
       </div>

@@ -25,10 +25,12 @@ export function runTween<T>(
         // 強制將 x/y 取整數，避免 subpixel rendering
         if ('x' in obj && typeof obj['x'] === 'number') obj['x'] = Math.round(obj['x']);
         if ('y' in obj && typeof obj['y'] === 'number') obj['y'] = Math.round(obj['y']);
+        if ('displayWidth' in obj && typeof obj['displayWidth'] === 'number') obj['displayWidth'] = Math.floor(obj['displayWidth']);
+        if ('displayHeight' in obj && typeof obj['displayHeight'] === 'number') obj['displayHeight'] = Math.floor(obj['displayHeight']);
         // scale 取小數第二位，避免 subpixel scale 造成鋸齒或黑邊
-        if ('scale' in obj && typeof obj['scale'] === 'number') obj['scale'] = Math.round(obj['scale'] * 100) / 100;
-        if ('scaleX' in obj && typeof obj['scaleX'] === 'number') obj['scaleX'] = Math.round(obj['scaleX'] * 100) / 100;
-        if ('scaleY' in obj && typeof obj['scaleY'] === 'number') obj['scaleY'] = Math.round(obj['scaleY'] * 100) / 100;
+        if ('scale' in obj && typeof obj['scale'] === 'number') obj['scale'] = (obj['scale'] * 100) / 100;
+        if ('scaleX' in obj && typeof obj['scaleX'] === 'number') obj['scaleX'] = (obj['scaleX'] * 100) / 100;
+        if ('scaleY' in obj && typeof obj['scaleY'] === 'number') obj['scaleY'] = (obj['scaleY'] * 100) / 100;
       },
     });
 
