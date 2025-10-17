@@ -142,18 +142,18 @@
     ],
     "base": {
       "max_hp": 100,
-      "name": "CurryCat"
+      "name": "咖哩貓"
     },
     "actions": {
       "attack": {
         "animation": "attack",
-        "priority": 10,
+        "priority": 60,
         "dialogues": [
           {
             "dialog": [
               {
                 "portrait": "battle_currycat_opponent_face_normal",
-                "text": "咖哩攻擊!"
+                "text": "咖哩貓衝撞攻擊!"
               }
             ],
             "priority": 2
@@ -167,7 +167,7 @@
       },
       "sp1": {
         "animation": "sp",
-        "priority": 2,
+        "priority": 20,
         "dialogues": [
           {
             "dialog": [
@@ -206,7 +206,7 @@
         "effect": {
           "type": "recover",
           "target": "opponent",
-          "value": 40
+          "value": 50
         }
       }
     },
@@ -246,7 +246,7 @@
           "dialog": [
             {
               "portrait": "battle_currycat_opponent_face_normal",
-              "text": "喵！！"
+              "text": "喵～～～"
             }
           ],
           "priority": 2
@@ -257,7 +257,7 @@
           "dialog": [
             {
               "portrait": "battle_currycat_opponent_face_normal",
-              "text": "喵"
+              "text": "掰掰！"
             }
           ],
           "priority": 2
@@ -313,13 +313,13 @@
     "actions": {
       "attack": {
         "animation": "attack",
-        "priority": 40,
+        "priority": 55,
         "dialogues": [
           {
             "dialog": [
               {
                 "portrait": "battle_beibei_opponent_face_normal",
-                "text": "打！"
+                "text": "貝貝使出衝撞攻擊！"
               }
             ],
             "priority": 2
@@ -333,13 +333,13 @@
       },
       "sp1": {
         "animation": "sp",
-        "priority": 60,
+        "priority": 45,
         "dialogues": [
           {
             "dialog": [
               {
                 "portrait": "battle_beibei_opponent_face_angry",
-                "text": "成熟大姐姐飛吻！！！"
+                "text": "貝貝使出成熟大姐姐飛吻！"
               }
             ],
             "priority": 2
@@ -348,7 +348,7 @@
         "effect": {
           "type": "recover",
           "target": "self",
-          "value": 10
+          "value": 35
         }
       }
     },
@@ -360,7 +360,7 @@
             "dialog": [
               {
                 "portrait": "battle_beibei_opponent_face_sad",
-                "text": "痛！！"
+                "text": "貝貝承受了傷害！！"
               }
             ],
             "priority": 2
@@ -374,7 +374,7 @@
             "dialog": [
               {
                 "portrait": "battle_beibei_opponent_face_normal",
-                "text": "蟹蟹尼！"
+                "text": "貝貝恢復了生命力！"
               }
             ],
             "priority": 2
@@ -388,7 +388,7 @@
           "dialog": [
             {
               "portrait": "battle_beibei_opponent_face_normal",
-              "text": "貝貝登場！"
+              "text": "貝貝前來挑戰！"
             }
           ],
           "priority": 2
@@ -399,7 +399,7 @@
           "dialog": [
             {
               "portrait": "battle_beibei_opponent_face_normal",
-              "text": "８８８８８８８"
+              "text": "掰掰！"
             }
           ],
           "priority": 2
@@ -413,7 +413,7 @@
             "dialog": [
               {
                 "portrait": "battle_beibei_opponent_face_normal",
-                "text": "我贏了"
+                "text": "貝貝贏了！"
               }
             ],
             "priority": 2
@@ -426,7 +426,7 @@
             "dialog": [
               {
                 "portrait": "battle_beibei_opponent_face_sad",
-                "text": "我輸了"
+                "text": "貝貝輸了..."
               }
             ],
             "priority": 2
@@ -461,7 +461,7 @@
             "dialog": [
               {
                 "portrait": "battle_shangshang_opponent_face_angry",
-                "text": "打！"
+                "text": "上上使出衝撞攻擊！"
               }
             ],
             "priority": 2
@@ -481,7 +481,7 @@
             "dialog": [
               {
                 "portrait": "battle_shangshang_opponent_face_angry",
-                "text": "吃我鐵拳！"
+                "text": "上上使出鐵拳攻擊！"
               }
             ],
             "priority": 2
@@ -490,7 +490,7 @@
         "effect": {
           "type": "damage",
           "target": "self",
-          "value": 30
+          "value": 50
         }
       }
     },
@@ -502,7 +502,7 @@
             "dialog": [
               {
                 "portrait": "battle_shangshang_opponent_face_sad",
-                "text": "好痛！"
+                "text": "上上承受了傷害！"
               }
             ],
             "priority": 2
@@ -516,7 +516,7 @@
             "dialog": [
               {
                 "portrait": "battle_shangshang_opponent_face_normal",
-                "text": "金乾蝦！"
+                "text": "上上恢復了生命力！"
               }
             ],
             "priority": 2
@@ -530,7 +530,7 @@
           "dialog": [
             {
               "portrait": "battle_shangshang_opponent_face_normal",
-              "text": "上上登場！"
+              "text": "上上前來挑戰！"
             }
           ],
           "priority": 2
@@ -555,7 +555,7 @@
             "dialog": [
               {
                 "portrait": "battle_shangshang_opponent_face_angry",
-                "text": "我贏了"
+                "text": "上上贏了！"
               }
             ],
             "priority": 2
@@ -568,7 +568,7 @@
             "dialog": [
               {
                 "portrait": "battle_shangshang_opponent_face_sad",
-                "text": "我輸了"
+                "text": "上上輸了..."
               }
             ],
             "priority": 2
@@ -592,7 +592,7 @@
     ],
     "base": {
       "max_hp": 100,
-      "name": "貞尼鹹粥"
+      "name": "安迪"
     },
     "actions": {
       "attack": {
@@ -603,16 +603,7 @@
             "dialog": [
               {
                 "portrait": "battle_jennie_opponent_face_angry",
-                "text": "輕攻擊"
-              }
-            ],
-            "priority": 2
-          },
-          {
-            "dialog": [
-              {
-                "portrait": "battle_jennie_opponent_face_angry",
-                "text": "重攻擊"
+                "text": "安迪使出衝撞攻擊！"
               }
             ],
             "priority": 2
@@ -621,7 +612,7 @@
         "effect": {
           "type": "damage",
           "target": "self",
-          "value": 30
+          "value": 35
         }
       },
       "sp1": {
@@ -630,6 +621,10 @@
         "dialogues": [
           {
             "dialog": [
+              {
+                "portrait": "battle_jennie_opponent_face_normal",
+                "text": "安迪使出"
+              },
               {
                 "portrait": "battle_jennie_opponent_face_angry",
                 "text": "我愛拉麵！"
@@ -641,7 +636,7 @@
         "effect": {
           "type": "recover",
           "target": "opponent",
-          "value": 20
+          "value": 50
         }
       }
     },
@@ -653,7 +648,7 @@
             "dialog": [
               {
                 "portrait": "battle_jennie_opponent_face_sad",
-                "text": "好痛"
+                "text": "安迪承受了傷害！"
               }
             ],
             "priority": 2
@@ -667,7 +662,7 @@
             "dialog": [
               {
                 "portrait": "battle_jennie_opponent_face_normal",
-                "text": "金乾蝦"
+                "text": "安迪恢復了生命力！"
               }
             ],
             "priority": 2
@@ -681,7 +676,7 @@
           "dialog": [
             {
               "portrait": "battle_jennie_opponent_face_normal",
-              "text": "貞尼鹹粥開台了"
+              "text": "安迪前來挑戰！"
             }
           ],
           "priority": 2
@@ -692,7 +687,7 @@
           "dialog": [
             {
               "portrait": "battle_jennie_opponent_face_normal",
-              "text": "貞尼鹹粥關台了"
+              "text": "掰掰"
             }
           ],
           "priority": 2
@@ -706,7 +701,7 @@
             "dialog": [
               {
                 "portrait": "battle_jennie_opponent_face_angry",
-                "text": "我贏了"
+                "text": "安迪贏了！"
               }
             ],
             "priority": 2
@@ -719,7 +714,7 @@
             "dialog": [
               {
                 "portrait": "battle_jennie_opponent_face_sad",
-                "text": "我輸了"
+                "text": "安迪輸了..."
               }
             ],
             "priority": 2
@@ -735,26 +730,25 @@
       "json": "battle/bbb.json"
     },
     "animations": [
-      { "prefix": "idle", "qty": 1, "freq": 1, "repeat": -1, "repeat_delay": 1000 },
-      { "prefix": "sp", "qty": 32, "freq": 16, "repeat": 0 },
+      { "prefix": "idle", "qty": 5, "freq": 6, "repeat": -1 },
       { "prefix": "face_normal", "qty": 1, "freq": 1, "repeat": 0 },
       { "prefix": "face_angry", "qty": 1, "freq": 1, "repeat": 0 },
       { "prefix": "face_sad", "qty": 1, "freq": 1, "repeat": 0 }
     ],
     "base": {
-      "max_hp": 100,
+      "max_hp": 120,
       "name": "BBB"
     },
     "actions": {
       "attack": {
         "animation": "attack",
-        "priority": 70,
+        "priority": 50,
         "dialogues": [
           {
             "dialog": [
               {
-                "portrait": "battle_bbb_opponent_face_normal",
-                "text": "攻擊"
+                "portrait": "battle_bbb_opponent_face_angry",
+                "text": "BBB使出衝撞攻擊！"
               }
             ],
             "priority": 2
@@ -766,19 +760,19 @@
           "value": 30
         }
       },
-      "sp1": {
-        "animation": "sp",
-        "priority": 30,
+      "attack2": {
+        "animation": "attack",
+        "priority": 40,
         "dialogues": [
           {
             "dialog": [
               {
                 "portrait": "battle_bbb_opponent_face_normal",
-                "text": "BBB！"
+                "text": "BBB使出衝撞攻擊！"
               },
               {
                 "portrait": "battle_bbb_opponent_face_angry",
-                "text": "究極進化！"
+                "text": "爆擊！"
               }
             ],
             "priority": 2
@@ -787,7 +781,7 @@
         "effect": {
           "type": "damage",
           "target": "self",
-          "value": 99
+          "value": 50
         }
       }
     },
@@ -799,7 +793,7 @@
             "dialog": [
               {
                 "portrait": "battle_bbb_opponent_face_sad",
-                "text": "好痛"
+                "text": "BBB承受了傷害！"
               }
             ],
             "priority": 2
@@ -813,7 +807,7 @@
             "dialog": [
               {
                 "portrait": "battle_bbb_opponent_face_normal",
-                "text": "謝謝"
+                "text": "BBB恢復了生命力！"
               }
             ],
             "priority": 2
@@ -827,7 +821,7 @@
           "dialog": [
             {
               "portrait": "battle_bbb_opponent_face_normal",
-              "text": "嗶嗶嗶來挑戰！"
+              "text": "BBB前來挑戰！"
             }
           ],
           "priority": 2
@@ -852,7 +846,7 @@
             "dialog": [
               {
                 "portrait": "battle_bbb_opponent_face_angry",
-                "text": "我贏了"
+                "text": "BBB贏了！"
               }
             ],
             "priority": 2
@@ -865,7 +859,7 @@
             "dialog": [
               {
                 "portrait": "battle_bbb_opponent_face_sad",
-                "text": "我輸了"
+                "text": "BBB輸了..."
               }
             ],
             "priority": 2
@@ -900,7 +894,7 @@
             "dialog": [
               {
                 "portrait": "battle_touching_opponent_face_normal",
-                "text": "攻擊"
+                "text": "踏青使出衝撞攻擊！"
               }
             ],
             "priority": 2
@@ -909,7 +903,7 @@
         "effect": {
           "type": "damage",
           "target": "self",
-          "value": 25
+          "value": 22
         }
       },
       "sp1": {
@@ -920,11 +914,11 @@
             "dialog": [
               {
                 "portrait": "battle_touching_opponent_face_normal",
-                "text": "爆橘！"
+                "text": "踏青使出了"
               },
               {
                 "portrait": "battle_touching_opponent_face_angry",
-                "text": "掐恰！"
+                "text": "橙汁攻擊！"
               }
             ],
             "priority": 2
@@ -933,7 +927,7 @@
         "effect": {
           "type": "damage",
           "target": "self",
-          "value": 35
+          "value": 45
         }
       }
     },
@@ -945,7 +939,7 @@
             "dialog": [
               {
                 "portrait": "battle_touching_opponent_face_sad",
-                "text": "好痛"
+                "text": "踏青承受了傷害！"
               }
             ],
             "priority": 2
@@ -959,7 +953,7 @@
             "dialog": [
               {
                 "portrait": "battle_touching_opponent_face_normal",
-                "text": "謝謝"
+                "text": "踏青恢復了生命力！"
               }
             ],
             "priority": 2
@@ -998,7 +992,7 @@
             "dialog": [
               {
                 "portrait": "battle_touching_opponent_face_angry",
-                "text": "我贏了"
+                "text": "踏青贏了！"
               }
             ],
             "priority": 2
@@ -1011,7 +1005,1308 @@
             "dialog": [
               {
                 "portrait": "battle_touching_opponent_face_sad",
-                "text": "我輸了"
+                "text": "踏青輸了..."
+              }
+            ],
+            "priority": 2
+          }
+        ]
+      }
+    }
+  },
+  "battle_ai4vupwjp_opponent": {
+    "key": "battle_ai4vupwjp_opponent",
+    "preload": {
+      "png": "battle/ai4vupwjp.png",
+      "json": "battle/ai4vupwjp.json"
+    },
+    "animations": [
+      { "prefix": "idle", "qty": 6, "freq": 10, "repeat": -1 },
+      { "prefix": "face_normal", "qty": 1, "freq": 1, "repeat": 0 },
+      { "prefix": "face_angry", "qty": 1, "freq": 1, "repeat": 0 },
+      { "prefix": "face_sad", "qty": 1, "freq": 1, "repeat": 0 }
+    ],
+    "base": {
+      "max_hp": 100,
+      "name": "ㄐㄎ"
+    },
+    "actions": {
+      "attack1": {
+        "animation": "attack",
+        "priority": 55,
+        "dialogues": [
+          {
+            "dialog": [
+              {
+                "portrait": "battle_ai4vupwjp_opponent_face_angry",
+                "text": "ㄐㄎ使出衝撞攻擊！"
+              }
+            ],
+            "priority": 2
+          }
+        ],
+        "effect": {
+          "type": "damage",
+          "target": "self",
+          "value": 40
+        }
+      },
+      "attack2": {
+        "animation": "attack",
+        "priority": 45,
+        "dialogues": [
+          {
+            "dialog": [
+              {
+                "portrait": "battle_ai4vupwjp_opponent_face_angry",
+                "text": "ㄐㄎ兌換了忠誠點數！"
+              },
+              {
+                "portrait": "battle_ai4vupwjp_opponent_face_normal",
+                "text": "提醒大家補充水分！"
+              }
+            ],
+            "priority": 2
+          }
+        ],
+        "effect": {
+          "type": "recover",
+          "target": "self",
+          "value": 15
+        }
+      }
+    },
+    "reactions": {
+      "damage": {
+        "animation": "damage",
+        "dialogues": [
+          {
+            "dialog": [
+              {
+                "portrait": "battle_ai4vupwjp_opponent_face_sad",
+                "text": "ㄐㄎ承受了傷害！"
+              }
+            ],
+            "priority": 2
+          }
+        ]
+      },
+      "recover": {
+        "animation": "recover",
+        "dialogues": [
+          {
+            "dialog": [
+              {
+                "portrait": "battle_ai4vupwjp_opponent_face_normal",
+                "text": "ㄐㄎ恢復了生命力！"
+              }
+            ],
+            "priority": 2
+          }
+        ]
+      }
+    },
+    "common": {
+      "start": [
+        {
+          "dialog": [
+            {
+              "portrait": "battle_ai4vupwjp_opponent_face_normal",
+              "text": "ㄐㄎ前來挑戰！"
+            }
+          ],
+          "priority": 2
+        }
+      ],
+      "finish": [
+        {
+          "dialog": [
+            {
+              "portrait": "battle_ai4vupwjp_opponent_face_normal",
+              "text": "掰掰"
+            }
+          ],
+          "priority": 2
+        }
+      ]
+    },
+    "results": {
+      "win": {
+        "dialogues": [
+          {
+            "dialog": [
+              {
+                "portrait": "battle_ai4vupwjp_opponent_face_angry",
+                "text": "ㄐㄎ贏了！"
+              }
+            ],
+            "priority": 2
+          }
+        ]
+      },
+      "lose": {
+        "dialogues": [
+          {
+            "dialog": [
+              {
+                "portrait": "battle_ai4vupwjp_opponent_face_sad",
+                "text": "ㄐㄎ輸了..."
+              }
+            ],
+            "priority": 2
+          }
+        ]
+      }
+    }
+  },
+  "battle_ka_opponent": {
+    "key": "battle_ka_opponent",
+    "preload": {
+      "png": "battle/ka.png",
+      "json": "battle/ka.json"
+    },
+    "animations": [
+      { "prefix": "idle", "qty": 4, "freq": 8, "repeat": -1 },
+      { "prefix": "face_normal", "qty": 1, "freq": 1, "repeat": 0 },
+      { "prefix": "face_angry", "qty": 1, "freq": 1, "repeat": 0 },
+      { "prefix": "face_sad", "qty": 1, "freq": 1, "repeat": 0 }
+    ],
+    "base": {
+      "max_hp": 100,
+      "name": "小咖"
+    },
+    "actions": {
+      "attack": {
+        "animation": "attack",
+        "priority": 60,
+        "dialogues": [
+          {
+            "dialog": [
+              {
+                "portrait": "battle_ka_opponent_face_angry",
+                "text": "小咖使出衝撞攻擊！"
+              }
+            ],
+            "priority": 2
+          }
+        ],
+        "effect": {
+          "type": "damage",
+          "target": "self",
+          "value": 28
+        }
+      },
+      "attack2": {
+        "animation": "attack",
+        "priority": 40,
+        "dialogues": [
+          {
+            "dialog": [
+              {
+                "portrait": "battle_ka_opponent_face_normal",
+                "text": "小咖使出衝撞攻擊！"
+              },
+              {
+                "portrait": "battle_ka_opponent_face_angry",
+                "text": "爆擊！"
+              }
+            ],
+            "priority": 2
+          }
+        ],
+        "effect": {
+          "type": "damage",
+          "target": "self",
+          "value": 50
+        }
+      }
+    },
+    "reactions": {
+      "damage": {
+        "animation": "damage",
+        "dialogues": [
+          {
+            "dialog": [
+              {
+                "portrait": "battle_ka_opponent_face_sad",
+                "text": "小咖承受了傷害！"
+              }
+            ],
+            "priority": 2
+          }
+        ]
+      },
+      "recover": {
+        "animation": "recover",
+        "dialogues": [
+          {
+            "dialog": [
+              {
+                "portrait": "battle_ka_opponent_face_normal",
+                "text": "小咖恢復了生命力！"
+              }
+            ],
+            "priority": 2
+          }
+        ]
+      }
+    },
+    "common": {
+      "start": [
+        {
+          "dialog": [
+            {
+              "portrait": "battle_ka_opponent_face_normal",
+              "text": "小咖前來挑戰！"
+            }
+          ],
+          "priority": 2
+        }
+      ],
+      "finish": [
+        {
+          "dialog": [
+            {
+              "portrait": "battle_ka_opponent_face_normal",
+              "text": "掰掰"
+            }
+          ],
+          "priority": 2
+        }
+      ]
+    },
+    "results": {
+      "win": {
+        "dialogues": [
+          {
+            "dialog": [
+              {
+                "portrait": "battle_ka_opponent_face_angry",
+                "text": "小咖贏了！"
+              }
+            ],
+            "priority": 2
+          }
+        ]
+      },
+      "lose": {
+        "dialogues": [
+          {
+            "dialog": [
+              {
+                "portrait": "battle_ka_opponent_face_sad",
+                "text": "小咖輸了..."
+              }
+            ],
+            "priority": 2
+          }
+        ]
+      }
+    }
+  },
+  "battle_dara_opponent": {
+    "key": "battle_dara_opponent",
+    "preload": {
+      "png": "battle/dara.png",
+      "json": "battle/dara.json"
+    },
+    "animations": [
+      { "prefix": "idle", "qty": 5, "freq": 6, "repeat": -1 },
+      { "prefix": "face_normal", "qty": 1, "freq": 1, "repeat": 0 },
+      { "prefix": "face_angry", "qty": 1, "freq": 1, "repeat": 0 },
+      { "prefix": "face_sad", "qty": 1, "freq": 1, "repeat": 0 }
+    ],
+    "base": {
+      "max_hp": 100,
+      "name": "だらだら"
+    },
+    "actions": {
+      "attack": {
+        "animation": "attack",
+        "priority": 65,
+        "dialogues": [
+          {
+            "dialog": [
+              {
+                "portrait": "battle_dara_opponent_face_angry",
+                "text": "だらだら使出衝撞攻擊！！"
+              }
+            ],
+            "priority": 2
+          }
+        ],
+        "effect": {
+          "type": "damage",
+          "target": "self",
+          "value": 24
+        }
+      },
+      "attack2": {
+        "animation": "attack",
+        "priority": 35,
+        "dialogues": [
+          {
+            "dialog": [
+              {
+                "portrait": "battle_dara_opponent_face_normal",
+                "text": "だらだら使出衝撞攻擊！！"
+              },
+              {
+                "portrait": "battle_dara_opponent_face_angry",
+                "text": "爆擊！"
+              }
+            ],
+            "priority": 2
+          }
+        ],
+        "effect": {
+          "type": "damage",
+          "target": "self",
+          "value": 45
+        }
+      }
+    },
+    "reactions": {
+      "damage": {
+        "animation": "damage",
+        "dialogues": [
+          {
+            "dialog": [
+              {
+                "portrait": "battle_dara_opponent_face_sad",
+                "text": "だらだら承受傷害..."
+              }
+            ],
+            "priority": 2
+          }
+        ]
+      },
+      "recover": {
+        "animation": "recover",
+        "dialogues": [
+          {
+            "dialog": [
+              {
+                "portrait": "battle_dara_opponent_face_normal",
+                "text": "だらだら恢復了生命力！"
+              }
+            ],
+            "priority": 2
+          }
+        ]
+      }
+    },
+    "common": {
+      "start": [
+        {
+          "dialog": [
+            {
+              "portrait": "battle_dara_opponent_face_normal",
+              "text": "だらだら來挑戰！"
+            }
+          ],
+          "priority": 2
+        }
+      ],
+      "finish": [
+        {
+          "dialog": [
+            {
+              "portrait": "battle_dara_opponent_face_normal",
+              "text": "掰掰"
+            }
+          ],
+          "priority": 2
+        }
+      ]
+    },
+    "results": {
+      "win": {
+        "dialogues": [
+          {
+            "dialog": [
+              {
+                "portrait": "battle_dara_opponent_face_angry",
+                "text": "だらだら贏了！"
+              }
+            ],
+            "priority": 2
+          }
+        ]
+      },
+      "lose": {
+        "dialogues": [
+          {
+            "dialog": [
+              {
+                "portrait": "battle_dara_opponent_face_sad",
+                "text": "だらだら輸了..."
+              }
+            ],
+            "priority": 2
+          }
+        ]
+      }
+    }
+  },
+  "battle_fast_opponent": {
+    "key": "battle_fast_opponent",
+    "preload": {
+      "png": "battle/fast.png",
+      "json": "battle/fast.json"
+    },
+    "animations": [
+      { "prefix": "idle", "qty": 4, "freq": 2, "repeat": -1 },
+      { "prefix": "face_normal", "qty": 1, "freq": 1, "repeat": 0 },
+      { "prefix": "face_angry", "qty": 1, "freq": 1, "repeat": 0 },
+      { "prefix": "face_sad", "qty": 1, "freq": 1, "repeat": 0 }
+    ],
+    "base": {
+      "max_hp": 100,
+      "name": "還要更快"
+    },
+    "actions": {
+      "attack": {
+        "animation": "attack",
+        "priority": 65,
+        "dialogues": [
+          {
+            "dialog": [
+              {
+                "portrait": "battle_fast_opponent_face_angry",
+                "text": "星爆氣流斬！"
+              }
+            ],
+            "priority": 2
+          }
+        ],
+        "effect": {
+          "type": "damage",
+          "target": "self",
+          "value": 27
+        }
+      },
+      "attack2": {
+        "animation": "attack",
+        "priority": 35,
+        "dialogues": [
+          {
+            "dialog": [
+              {
+                "portrait": "battle_fast_opponent_face_angry",
+                "text": "スターバースト・ストリーム！"
+              }
+            ],
+            "priority": 2
+          }
+        ],
+        "effect": {
+          "type": "damage",
+          "target": "self",
+          "value": 45
+        }
+      }
+    },
+    "reactions": {
+      "damage": {
+        "animation": "damage",
+        "dialogues": [
+          {
+            "dialog": [
+              {
+                "portrait": "battle_fast_opponent_face_sad",
+                "text": "騙人的吧！"
+              }
+            ],
+            "priority": 2
+          }
+        ]
+      },
+      "recover": {
+        "animation": "recover",
+        "dialogues": [
+          {
+            "dialog": [
+              {
+                "portrait": "battle_fast_opponent_face_normal",
+                "text": "謝幫復"
+              }
+            ],
+            "priority": 2
+          }
+        ]
+      }
+    },
+    "common": {
+      "start": [
+        {
+          "dialog": [
+            {
+              "portrait": "battle_fast_opponent_face_normal",
+              "text": "幫我撐十秒！"
+            }
+          ],
+          "priority": 2
+        }
+      ],
+      "finish": [
+        {
+          "dialog": [
+            {
+              "portrait": "battle_fast_opponent_face_normal",
+              "text": "掰掰"
+            }
+          ],
+          "priority": 2
+        }
+      ]
+    },
+    "results": {
+      "win": {
+        "dialogues": [
+          {
+            "dialog": [
+              {
+                "portrait": "battle_fast_opponent_face_angry",
+                "text": "摩托哈壓哭！"
+              }
+            ],
+            "priority": 2
+          }
+        ]
+      },
+      "lose": {
+        "dialogues": [
+          {
+            "dialog": [
+              {
+                "portrait": "battle_fast_opponent_face_sad",
+                "text": "嘘だ！"
+              }
+            ],
+            "priority": 2
+          }
+        ]
+      }
+    }
+  },
+  "battle_hudeijun_opponent": {
+    "key": "battle_hudeijun_opponent",
+    "preload": {
+      "png": "battle/hudeijun.png",
+      "json": "battle/hudeijun.json"
+    },
+    "animations": [
+      { "prefix": "idle", "qty": 4, "freq": 6, "repeat": -1 },
+      { "prefix": "face_normal", "qty": 1, "freq": 1, "repeat": 0 },
+      { "prefix": "face_angry", "qty": 1, "freq": 1, "repeat": 0 },
+      { "prefix": "face_sad", "qty": 1, "freq": 1, "repeat": 0 }
+    ],
+    "base": {
+      "max_hp": 100,
+      "name": "是小蝶"
+    },
+    "actions": {
+      "attack": {
+        "animation": "attack",
+        "priority": 55,
+        "dialogues": [
+          {
+            "dialog": [
+              {
+                "portrait": "battle_hudeijun_opponent_face_angry",
+                "text": "小蝶使出了衝撞攻擊！"
+              }
+            ],
+            "priority": 2
+          }
+        ],
+        "effect": {
+          "type": "damage",
+          "target": "self",
+          "value": 24
+        }
+      },
+      "attack2": {
+        "animation": "attack",
+        "priority": 45,
+        "dialogues": [
+          {
+            "dialog": [
+              {
+                "portrait": "battle_hudeijun_opponent_face_angry",
+                "text": "小蝶使出了衝撞攻擊！"
+              },
+              {
+                "portrait": "battle_hudeijun_opponent_face_normal",
+                "text": "爆擊！"
+              }
+            ],
+            "priority": 2
+          }
+        ],
+        "effect": {
+          "type": "damage",
+          "target": "self",
+          "value": 40
+        }
+      }
+    },
+    "reactions": {
+      "damage": {
+        "animation": "damage",
+        "dialogues": [
+          {
+            "dialog": [
+              {
+                "portrait": "battle_hudeijun_opponent_face_sad",
+                "text": "小蝶承受了傷害！"
+              }
+            ],
+            "priority": 2
+          }
+        ]
+      },
+      "recover": {
+        "animation": "recover",
+        "dialogues": [
+          {
+            "dialog": [
+              {
+                "portrait": "battle_hudeijun_opponent_face_normal",
+                "text": "小蝶恢復了生命力！"
+              }
+            ],
+            "priority": 2
+          }
+        ]
+      }
+    },
+    "common": {
+      "start": [
+        {
+          "dialog": [
+            {
+              "portrait": "battle_hudeijun_opponent_face_normal",
+              "text": "是小蝶前來挑戰！"
+            }
+          ],
+          "priority": 2
+        }
+      ],
+      "finish": [
+        {
+          "dialog": [
+            {
+              "portrait": "battle_hudeijun_opponent_face_normal",
+              "text": "掰掰"
+            }
+          ],
+          "priority": 2
+        }
+      ]
+    },
+    "results": {
+      "win": {
+        "dialogues": [
+          {
+            "dialog": [
+              {
+                "portrait": "battle_hudeijun_opponent_face_angry",
+                "text": "小蝶贏了！"
+              }
+            ],
+            "priority": 2
+          }
+        ]
+      },
+      "lose": {
+        "dialogues": [
+          {
+            "dialog": [
+              {
+                "portrait": "battle_hudeijun_opponent_face_sad",
+                "text": "小蝶輸了..."
+              }
+            ],
+            "priority": 2
+          }
+        ]
+      }
+    }
+  },
+  "battle_maoramei_opponent": {
+    "key": "battle_maoramei_opponent",
+    "preload": {
+      "png": "battle/maoramei.png",
+      "json": "battle/maoramei.json"
+    },
+    "animations": [
+      { "prefix": "idle", "qty": 7, "freq": 8, "repeat": -1, "repeat_delay": 1000 },
+      { "prefix": "face_normal", "qty": 1, "freq": 1, "repeat": 0 },
+      { "prefix": "face_angry", "qty": 1, "freq": 1, "repeat": 0 },
+      { "prefix": "face_sad", "qty": 1, "freq": 1, "repeat": 0 }
+    ],
+    "base": {
+      "max_hp": 100,
+      "name": "貓辣妹"
+    },
+    "actions": {
+      "attack": {
+        "animation": "attack",
+        "priority": 65,
+        "dialogues": [
+          {
+            "dialog": [
+              {
+                "portrait": "battle_maoramei_opponent_face_angry",
+                "text": "貓辣妹使出衝撞攻擊！"
+              }
+            ],
+            "priority": 2
+          }
+        ],
+        "effect": {
+          "type": "damage",
+          "target": "self",
+          "value": 30
+        }
+      },
+      "attack2": {
+        "animation": "attack",
+        "priority": 35,
+        "dialogues": [
+          {
+            "dialog": [
+              {
+                "portrait": "battle_maoramei_opponent_face_normal",
+                "text": "貓辣妹使出衝撞攻擊！"
+              },
+              {
+                "portrait": "battle_maoramei_opponent_face_angry",
+                "text": "爆擊！"
+              }
+            ],
+            "priority": 2
+          }
+        ],
+        "effect": {
+          "type": "damage",
+          "target": "self",
+          "value": 45
+        }
+      }
+    },
+    "reactions": {
+      "damage": {
+        "animation": "damage",
+        "dialogues": [
+          {
+            "dialog": [
+              {
+                "portrait": "battle_maoramei_opponent_face_sad",
+                "text": "小辣妹承受了傷害！"
+              }
+            ],
+            "priority": 2
+          }
+        ]
+      },
+      "recover": {
+        "animation": "recover",
+        "dialogues": [
+          {
+            "dialog": [
+              {
+                "portrait": "battle_maoramei_opponent_face_normal",
+                "text": "貓辣妹恢復了生命力！"
+              }
+            ],
+            "priority": 2
+          }
+        ]
+      }
+    },
+    "common": {
+      "start": [
+        {
+          "dialog": [
+            {
+              "portrait": "battle_maoramei_opponent_face_normal",
+              "text": "貓辣妹前來挑戰！"
+            }
+          ],
+          "priority": 2
+        }
+      ],
+      "finish": [
+        {
+          "dialog": [
+            {
+              "portrait": "battle_maoramei_opponent_face_normal",
+              "text": "掰掰"
+            }
+          ],
+          "priority": 2
+        }
+      ]
+    },
+    "results": {
+      "win": {
+        "dialogues": [
+          {
+            "dialog": [
+              {
+                "portrait": "battle_maoramei_opponent_face_angry",
+                "text": "貓辣妹贏了！"
+              }
+            ],
+            "priority": 2
+          }
+        ]
+      },
+      "lose": {
+        "dialogues": [
+          {
+            "dialog": [
+              {
+                "portrait": "battle_maoramei_opponent_face_sad",
+                "text": "貓辣妹輸了..."
+              }
+            ],
+            "priority": 2
+          }
+        ]
+      }
+    }
+  },
+  "battle_p13p04_opponent": {
+    "key": "battle_p13p04_opponent",
+    "preload": {
+      "png": "battle/p13p04.png",
+      "json": "battle/p13p04.json"
+    },
+    "animations": [
+      { "prefix": "idle", "qty": 8, "freq": 8, "repeat": -1, "repeat_delay": 1000 },
+      { "prefix": "face_normal", "qty": 1, "freq": 1, "repeat": 0 },
+      { "prefix": "face_angry", "qty": 1, "freq": 1, "repeat": 0 },
+      { "prefix": "face_sad", "qty": 1, "freq": 1, "repeat": 0 }
+    ],
+    "base": {
+      "max_hp": 100,
+      "name": "問問"
+    },
+    "actions": {
+      "attack": {
+        "animation": "attack",
+        "priority": 60,
+        "dialogues": [
+          {
+            "dialog": [
+              {
+                "portrait": "battle_p13p04_opponent_face_angry",
+                "text": "問問使出了衝撞攻擊！"
+              }
+            ],
+            "priority": 2
+          }
+        ],
+        "effect": {
+          "type": "damage",
+          "target": "self",
+          "value": 22
+        }
+      },
+      "attack2": {
+        "animation": "attack",
+        "priority": 40,
+        "dialogues": [
+          {
+            "dialog": [
+              {
+                "portrait": "battle_p13p04_opponent_face_normal",
+                "text": "問問使出了衝撞攻擊！"
+              },
+              {
+                "portrait": "battle_p13p04_opponent_face_angry",
+                "text": "爆擊！"
+              }
+            ],
+            "priority": 2
+          }
+        ],
+        "effect": {
+          "type": "damage",
+          "target": "self",
+          "value": 40
+        }
+      }
+    },
+    "reactions": {
+      "damage": {
+        "animation": "damage",
+        "dialogues": [
+          {
+            "dialog": [
+              {
+                "portrait": "battle_p13p04_opponent_face_sad",
+                "text": "問問承受了傷害！"
+              }
+            ],
+            "priority": 2
+          }
+        ]
+      },
+      "recover": {
+        "animation": "recover",
+        "dialogues": [
+          {
+            "dialog": [
+              {
+                "portrait": "battle_p13p04_opponent_face_normal",
+                "text": "問問恢復了生命力！"
+              }
+            ],
+            "priority": 2
+          }
+        ]
+      }
+    },
+    "common": {
+      "start": [
+        {
+          "dialog": [
+            {
+              "portrait": "battle_p13p04_opponent_face_normal",
+              "text": "問問前來挑戰！"
+            }
+          ],
+          "priority": 2
+        }
+      ],
+      "finish": [
+        {
+          "dialog": [
+            {
+              "portrait": "battle_p13p04_opponent_face_normal",
+              "text": "掰掰"
+            }
+          ],
+          "priority": 2
+        }
+      ]
+    },
+    "results": {
+      "win": {
+        "dialogues": [
+          {
+            "dialog": [
+              {
+                "portrait": "battle_p13p04_opponent_face_angry",
+                "text": "問問贏了！"
+              }
+            ],
+            "priority": 2
+          }
+        ]
+      },
+      "lose": {
+        "dialogues": [
+          {
+            "dialog": [
+              {
+                "portrait": "battle_p13p04_opponent_face_sad",
+                "text": "問問輸了..."
+              }
+            ],
+            "priority": 2
+          }
+        ]
+      }
+    }
+  },
+  "battle_pachin_opponent": {
+    "key": "battle_pachin_opponent",
+    "preload": {
+      "png": "battle/pachin.png",
+      "json": "battle/pachin.json"
+    },
+    "animations": [
+      { "prefix": "idle", "qty": 10, "freq": 10, "repeat": -1 },
+      { "prefix": "face_normal", "qty": 1, "freq": 1, "repeat": 0 },
+      { "prefix": "face_angry", "qty": 1, "freq": 1, "repeat": 0 },
+      { "prefix": "face_sad", "qty": 1, "freq": 1, "repeat": 0 }
+    ],
+    "base": {
+      "max_hp": 100,
+      "name": "爬慶狗"
+    },
+    "actions": {
+      "attack": {
+        "animation": "attack",
+        "priority": 55,
+        "dialogues": [
+          {
+            "dialog": [
+              {
+                "portrait": "battle_pachin_opponent_face_angry",
+                "text": "爬慶狗使出衝撞攻擊！"
+              }
+            ],
+            "priority": 2
+          }
+        ],
+        "effect": {
+          "type": "damage",
+          "target": "self",
+          "value": 20
+        }
+      },
+      "attack2": {
+        "animation": "attack",
+        "priority": 55,
+        "dialogues": [
+          {
+            "dialog": [
+              {
+                "portrait": "battle_pachin_opponent_face_normal",
+                "text": "爬慶狗使出衝撞攻擊！"
+              },
+              {
+                "portrait": "battle_pachin_opponent_face_angry",
+                "text": "爆擊！"
+              }
+            ],
+            "priority": 2
+          }
+        ],
+        "effect": {
+          "type": "damage",
+          "target": "self",
+          "value": 35
+        }
+      }
+    },
+    "reactions": {
+      "damage": {
+        "animation": "damage",
+        "dialogues": [
+          {
+            "dialog": [
+              {
+                "portrait": "battle_pachin_opponent_face_sad",
+                "text": "bonk！爬慶狗承受了傷害！"
+              }
+            ],
+            "priority": 2
+          }
+        ]
+      },
+      "recover": {
+        "animation": "recover",
+        "dialogues": [
+          {
+            "dialog": [
+              {
+                "portrait": "battle_pachin_opponent_face_normal",
+                "text": "爬慶狗恢復了生命力！"
+              }
+            ],
+            "priority": 2
+          }
+        ]
+      }
+    },
+    "common": {
+      "start": [
+        {
+          "dialog": [
+            {
+              "portrait": "battle_pachin_opponent_face_normal",
+              "text": "爬慶狗前來挑戰！"
+            }
+          ],
+          "priority": 2
+        }
+      ],
+      "finish": [
+        {
+          "dialog": [
+            {
+              "portrait": "battle_pachin_opponent_face_normal",
+              "text": "掰掰"
+            }
+          ],
+          "priority": 2
+        }
+      ]
+    },
+    "results": {
+      "win": {
+        "dialogues": [
+          {
+            "dialog": [
+              {
+                "portrait": "battle_pachin_opponent_face_angry",
+                "text": "爬慶狗贏了！"
+              }
+            ],
+            "priority": 2
+          }
+        ]
+      },
+      "lose": {
+        "dialogues": [
+          {
+            "dialog": [
+              {
+                "portrait": "battle_pachin_opponent_face_sad",
+                "text": "爬慶狗輸了..."
+              }
+            ],
+            "priority": 2
+          }
+        ]
+      }
+    }
+  },
+  "battle_pumpkin_opponent": {
+    "key": "battle_pumpkin_opponent",
+    "preload": {
+      "png": "battle/pumpkin.png",
+      "json": "battle/pumpkin.json"
+    },
+    "animations": [
+      { "prefix": "idle", "qty": 4, "freq": 4, "repeat": -1 },
+      { "prefix": "face_normal", "qty": 1, "freq": 1, "repeat": 0 },
+      { "prefix": "face_angry", "qty": 1, "freq": 1, "repeat": 0 },
+      { "prefix": "face_sad", "qty": 1, "freq": 1, "repeat": 0 }
+    ],
+    "base": {
+      "max_hp": 100,
+      "name": "龐淇"
+    },
+    "actions": {
+      "attack": {
+        "animation": "attack",
+        "priority": 65,
+        "dialogues": [
+          {
+            "dialog": [
+              {
+                "portrait": "battle_pumpkin_opponent_face_angry",
+                "text": "龐淇使出了衝撞攻擊！"
+              }
+            ],
+            "priority": 2
+          }
+        ],
+        "effect": {
+          "type": "damage",
+          "target": "self",
+          "value": 24
+        }
+      },
+      "attack2": {
+        "animation": "attack",
+        "priority": 40,
+        "dialogues": [
+          {
+            "dialog": [
+              {
+                "portrait": "battle_pumpkin_opponent_face_normal",
+                "text": "龐淇使出了衝撞攻擊！"
+              },
+              {
+                "portrait": "battle_pumpkin_opponent_face_angry",
+                "text": "爆擊！"
+              }
+            ],
+            "priority": 2
+          }
+        ],
+        "effect": {
+          "type": "damage",
+          "target": "self",
+          "value": 45
+        }
+      }
+    },
+    "reactions": {
+      "damage": {
+        "animation": "damage",
+        "dialogues": [
+          {
+            "dialog": [
+              {
+                "portrait": "battle_pumpkin_opponent_face_sad",
+                "text": "龐淇承受了傷害！"
+              }
+            ],
+            "priority": 2
+          }
+        ]
+      },
+      "recover": {
+        "animation": "recover",
+        "dialogues": [
+          {
+            "dialog": [
+              {
+                "portrait": "battle_pumpkin_opponent_face_normal",
+                "text": "龐淇恢復了生命力！"
+              }
+            ],
+            "priority": 2
+          }
+        ]
+      }
+    },
+    "common": {
+      "start": [
+        {
+          "dialog": [
+            {
+              "portrait": "battle_pumpkin_opponent_face_normal",
+              "text": "龐淇前來挑戰！"
+            }
+          ],
+          "priority": 2
+        }
+      ],
+      "finish": [
+        {
+          "dialog": [
+            {
+              "portrait": "battle_pumpkin_opponent_face_normal",
+              "text": "掰掰"
+            }
+          ],
+          "priority": 2
+        }
+      ]
+    },
+    "results": {
+      "win": {
+        "dialogues": [
+          {
+            "dialog": [
+              {
+                "portrait": "battle_pumpkin_opponent_face_angry",
+                "text": "龐淇贏了！"
+              }
+            ],
+            "priority": 2
+          }
+        ]
+      },
+      "lose": {
+        "dialogues": [
+          {
+            "dialog": [
+              {
+                "portrait": "battle_pumpkin_opponent_face_sad",
+                "text": "龐淇輸了..."
               }
             ],
             "priority": 2
@@ -1039,33 +2334,13 @@
     "actions": {
       "attack": {
         "animation": "attack",
-        "priority": 60,
-        "dialogues": [
-          {
-            "dialog": [
-              {
-                "portrait": "battle_afk_self_face_angry",
-                "text": "攻擊！"
-              }
-            ],
-            "priority": 2
-          }
-        ],
-        "effect": {
-          "type": "damage",
-          "target": "opponent",
-          "value": 20
-        }
-      },
-      "attack2": {
-        "animation": "attack",
         "priority": 40,
         "dialogues": [
           {
             "dialog": [
               {
                 "portrait": "battle_afk_self_face_angry",
-                "text": "重攻擊！"
+                "text": "AFK君使出衝撞攻擊！"
               }
             ],
             "priority": 2
@@ -1074,7 +2349,79 @@
         "effect": {
           "type": "damage",
           "target": "opponent",
-          "value": 40
+          "value": 24
+        }
+      },
+      "attack2": {
+        "animation": "attack",
+        "priority": 10,
+        "dialogues": [
+          {
+            "dialog": [
+              {
+                "portrait": "battle_afk_self_face_angry",
+                "text": "AFK君使出衝撞攻擊！"
+              },
+              {
+                "portrait": "battle_afk_self_face_sad",
+                "text": "但是跌倒了！"
+              }
+            ],
+            "priority": 2
+          }
+        ],
+        "effect": {
+          "type": "damage",
+          "target": "self",
+          "value": 10
+        }
+      },
+      "attack3": {
+        "animation": "attack",
+        "priority": 20,
+        "dialogues": [
+          {
+            "dialog": [
+              {
+                "portrait": "battle_afk_self_face_angry",
+                "text": "AFK君使出衝撞攻擊！"
+              },
+              {
+                "portrait": "battle_afk_self_face_angry",
+                "text": "爆擊！"
+              }
+            ],
+            "priority": 2
+          }
+        ],
+        "effect": {
+          "type": "damage",
+          "target": "opponent",
+          "value": 45
+        }
+      },
+      "attack4": {
+        "animation": "recover",
+        "priority": 20,
+        "dialogues": [
+          {
+            "dialog": [
+              {
+                "portrait": "battle_afk_self_face_angry",
+                "text": "AFK君使出..."
+              },
+              {
+                "portrait": "battle_afk_self_face_normal",
+                "text": "請你喝一杯水！"
+              }
+            ],
+            "priority": 2
+          }
+        ],
+        "effect": {
+          "type": "recover",
+          "target": "opponent",
+          "value": 30
         }
       },
       "recover": {
@@ -1084,8 +2431,12 @@
           {
             "dialog": [
               {
+                "portrait": "battle_afk_self_face_sad",
+                "text": "AFK君使出..."
+              },
+              {
                 "portrait": "battle_afk_self_face_normal",
-                "text": "恢復血量！"
+                "text": "休息一下！"
               }
             ],
             "priority": 2
@@ -1094,7 +2445,7 @@
         "effect": {
           "type": "recover",
           "target": "self",
-          "value": 40
+          "value": 100
         }
       }
     },
@@ -1106,7 +2457,7 @@
             "dialog": [
               {
                 "portrait": "battle_afk_self_face_sad",
-                "text": "嗚哇嗚哇"
+                "text": "AFK君承受了傷害！"
               }
             ],
             "priority": 2
@@ -1120,16 +2471,7 @@
             "dialog": [
               {
                 "portrait": "battle_afk_self_face_normal",
-                "text": "精神百倍！"
-              }
-            ],
-            "priority": 2
-          },
-          {
-            "dialog": [
-              {
-                "portrait": "battle_afk_self_face_normal",
-                "text": "神清氣爽！"
+                "text": "AFK君恢復生命力！"
               }
             ],
             "priority": 2
@@ -1143,7 +2485,7 @@
           "dialog": [
             {
               "portrait": "battle_afk_self_face_normal",
-              "text": "戰鬥開始！"
+              "text": "戰鬥開始了！！"
             }
           ],
           "priority": 2
@@ -1168,7 +2510,7 @@
             "dialog": [
               {
                 "portrait": "battle_afk_self_face_angry",
-                "text": "我贏了"
+                "text": "AFK君贏了！"
               }
             ],
             "priority": 2
@@ -1181,7 +2523,7 @@
             "dialog": [
               {
                 "portrait": "battle_afk_self_face_sad",
-                "text": "我輸了"
+                "text": "AFK君輸了..."
               }
             ],
             "priority": 2
