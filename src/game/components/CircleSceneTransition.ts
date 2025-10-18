@@ -47,7 +47,7 @@ class CircleScreenTransition extends Phaser.GameObjects.Container {
     const { zoom } = scene.scale;
     const { width, height } = scene.sys.game.canvas;
     
-    this.curcleMaxSize = Math.max(width * zoom, height * zoom) * 1.1;
+    this.curcleMaxSize = Math.max(width * zoom, height * zoom);
 
     const coverRect = scene.add
       .rectangle(0, 0, width * zoom, height * zoom, maskCoverColor)
@@ -86,7 +86,7 @@ class CircleScreenTransition extends Phaser.GameObjects.Container {
     return;
   }
   public async runUnmask() {
-    await runTween(this.visibleArea, { radius: 200 }, DURATION);
+    await runTween(this.visibleArea, { radius: 220 }, DURATION);
     return;
   }
 }

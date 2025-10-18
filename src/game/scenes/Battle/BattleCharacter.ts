@@ -13,7 +13,7 @@ type TDialogItem = {
 export type TEffect = {
   type: 'damage' | 'recover';
   target: 'self' | 'opponent';
-  value?: number;
+  value: number;
   basic: number;
 };
 

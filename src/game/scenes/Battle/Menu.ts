@@ -59,9 +59,9 @@ export class Menu extends Phaser.GameObjects.Container {
 
     this.add(this.background);
 
-    // 只建立 3 個 action option（可視窗）
+    // 固定建立 3 個 action option（可視窗），即使 actions 少於 3 也保留 slot
     const visibleCount = 3;
-    for (let i = 0; i < Math.min(visibleCount, this.actions.length); i++) {
+    for (let i = 0; i < visibleCount; i++) {
       const x = defaultX + paddingX;
       const y = defaultY + paddingY + i * (textFontSize + textBottomPadding);
       const text = this.scene.make.text({
@@ -72,7 +72,7 @@ export class Menu extends Phaser.GameObjects.Container {
           fontSize: textFontSize,
           color: '#000',
         },
-        text: this.actions[i],
+        text: this.actions[i] || '',
       })
       .setDepth(2)
       .setOrigin(0);
@@ -84,6 +84,11 @@ export class Menu extends Phaser.GameObjects.Container {
       .setAlpha(0)
       .setOrigin(0);
       this.add(arrow);
+      // 如果沒有對應 action，預設隱藏文字/箭頭
+      if (!this.actions[i]) {
+        text.setAlpha(0);
+        arrow.setAlpha(0);
+      }
       this.actionOptions.push({ arrow, text });
     }
     this.scene.add.existing(this);
@@ -93,7 +98,15 @@ export class Menu extends Phaser.GameObjects.Container {
     this.isEnable = true;
     this.setAlpha(1);
     this.updateVisibleActions();
-    this.actionOptions[this.currentOptionIndex - this.actionStartIndex].arrow.setAlpha(1);
+    // guard: 只有在有至少一個 action 可選時顯示箭頭
+    if (this.actions.length > 0) {
+      // clamp indices
+      const visibleCount = this.actionOptions.length || 3;
+      this.currentOptionIndex = Math.max(0, Math.min(this.currentOptionIndex, Math.max(0, this.actions.length - 1)));
+      this.actionStartIndex = Math.max(0, Math.min(this.actionStartIndex, Math.max(0, this.actions.length - visibleCount)));
+      const localIndex = this.currentOptionIndex - this.actionStartIndex;
+      this.actionOptions[localIndex]?.arrow.setAlpha(1);
+    }
   }
   
   public hideMenu = () => {
@@ -112,8 +125,9 @@ export class Menu extends Phaser.GameObjects.Container {
     if (this.currentOptionIndex < this.actions.length - 1) {
       this.currentOptionIndex++;
       // 若超過可視範圍，actionStartIndex++
-      if (this.currentOptionIndex > this.actionStartIndex + 2) {
-        this.actionStartIndex++;
+      const visibleCount = this.actionOptions.length || 3;
+      if (this.currentOptionIndex > this.actionStartIndex + (visibleCount - 1)) {
+        this.actionStartIndex = Math.min(this.actionStartIndex + 1, Math.max(0, this.actions.length - visibleCount));
         this.updateVisibleActions();
       }
     } else {
@@ -123,7 +137,8 @@ export class Menu extends Phaser.GameObjects.Container {
       this.updateVisibleActions();
     }
     this.actionOptions.forEach(({ arrow }) => arrow.setAlpha(0));
-    this.actionOptions[this.currentOptionIndex - this.actionStartIndex].arrow.setAlpha(1);
+    const localIdx = this.currentOptionIndex - this.actionStartIndex;
+    this.actionOptions[localIdx]?.arrow.setAlpha(1);
   };
   
   public prevAction = () => {
@@ -131,17 +146,18 @@ export class Menu extends Phaser.GameObjects.Container {
     if (this.currentOptionIndex > 0) {
       this.currentOptionIndex--;
       if (this.currentOptionIndex < this.actionStartIndex) {
-        this.actionStartIndex--;
+        this.actionStartIndex = Math.max(0, this.actionStartIndex - 1);
         this.updateVisibleActions();
       }
     } else {
       // 循環到最後一個
       this.currentOptionIndex = this.actions.length - 1;
-      this.actionStartIndex = Math.max(0, this.actions.length - 3);
+      this.actionStartIndex = Math.max(0, this.actions.length - (this.actionOptions.length || 3));
       this.updateVisibleActions();
     }
     this.actionOptions.forEach(({ arrow }) => arrow.setAlpha(0));
-    this.actionOptions[this.currentOptionIndex - this.actionStartIndex].arrow.setAlpha(1);
+    const localIdx2 = this.currentOptionIndex - this.actionStartIndex;
+    this.actionOptions[localIdx2]?.arrow.setAlpha(1);
   };
 
   public setActions(newActions: string[]) {
@@ -150,7 +166,11 @@ export class Menu extends Phaser.GameObjects.Container {
     this.actionStartIndex = 0;
     this.updateVisibleActions();
     this.actionOptions.forEach(({ arrow }) => arrow.setAlpha(0));
-    if (this.actionOptions[0]) this.actionOptions[0].arrow.setAlpha(1);
+    // 顯示第一個可用的箭頭（若有）
+    if (this.actions.length > 0) {
+      const idx = 0 - this.actionStartIndex;
+      this.actionOptions[idx]?.arrow.setAlpha(1);
+    }
   }
 
   // 新增：更新可見 actions
@@ -174,6 +194,7 @@ export class Menu extends Phaser.GameObjects.Container {
       arrow.destroy();
       text.destroy();
     });
+    this.actionOptions = [];
   }
   
 }

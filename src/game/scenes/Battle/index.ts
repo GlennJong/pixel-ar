@@ -7,6 +7,7 @@ import { originalHeight, originalWidth } from '../../constants';
 import { Menu } from './Menu';
 import { KeyboardHandler } from '@/game/handlers/KeyboardHander';
 import { EventBus } from '@/game/EventBus';
+import { introduction } from './introduction';
 
 
 type TAnimation = {
@@ -18,182 +19,66 @@ type TAnimation = {
   repeat_delay: number;
 };
 
+const aboutDialogue = [{
+  portrait: 'battle_afk_self_face_normal',
+  text: '這是咖哩貓做的貞貞俱樂部二創小遊戲。\n滿足小小的想做遊戲的願望！\n希望你有喜歡！',
+}];
 
-const introduction: { [key: string]: { portrait: string, text: string }[] } = {
-  default: [
-    {
-      portrait: 'battle_afk_self_face_normal',
-      text: '就是個沙包。',
-    }
-  ],
-  beibei: [
-    {
-      portrait: 'battle_afk_self_face_normal',
-      text: '她是來自貞貞俱樂部的貝貝！\n創作者是實況主貞尼鹹粥！',
-    }
-  ],
-  shangshang: [
-    {
-      portrait: 'battle_afk_self_face_normal',
-      text: '他是來自貞貞俱樂部的上上！\n創作者是實況主貞尼鹹粥！',
-    }
-  ],
-  jennie: [
-    {
-      portrait: 'battle_afk_self_face_normal',
-      text: '安迪就是實況主貞尼鹹粥！畫風很精緻又復古！\n平常會開台陪大家線上工作聊聊天，也會玩恐怖遊戲給大家看！\n還很喜歡吃拉麵！快去追蹤他！',
-    }
-  ],
-  currycat: [
-    {
-      portrait: 'battle_afk_self_face_normal',
-      text: '他是咖哩貓！\n是這個小遊戲的作者！在這個遊戲發生的所有bug都要怪他！',
-    },
-    {
-      portrait: 'battle_currycat_opponent_face_sad',
-      text: '不要再來bug啦！！',
-    }
-  ],
-  maoramei: [
-    {
-      portrait: 'battle_afk_self_face_normal',
-      text: '她是超有才華的實況主貓辣妹！\n常常舉辦超有創意的實況節目！\n大家的最愛貓辣妹！快去追蹤她！',
-    }
-  ],
+const winDialogue = [{
+  portrait: 'battle_afk_self_face_normal',
+  text: '恭喜你過關了！\n雖然我沒有準備獎勵給你...'
+}]
 
-  bbb: [
-    {
-      portrait: 'battle_afk_self_face_normal',
-      text: '他是最喜歡數碼寶貝的插畫家兼實況主BBB！',
-    },
-    {
-      portrait: 'battle_currycat_opponent_face_normal',
-      text: '超會畫細節滿滿的數碼寶貝大圖！',
-    },
-  ],
-  dara: [
-    {
-      portrait: 'battle_afk_self_face_normal',
-      text: '搭拉是俱樂部的插畫家成員之一！\n常常跟R菜一起擺攤！',
-    },
-    {
-      portrait: 'battle_currycat_opponent_face_normal',
-      text: 'OC超可愛！',
-    }
-  ],
-  touching: [
-    {
-      portrait: 'battle_afk_self_face_normal',
-      text: '橙踏青是一顆超會畫畫的橘子（？）',
-    },
-    {
-      portrait: 'battle_currycat_opponent_face_normal',
-      text: '畫風超精緻又很會作可愛動畫！\n太讚了吧！',
-    }
-  ],
-  ka: [
-    {
-      portrait: 'battle_afk_self_face_normal',
-      text: '小咖是哩哩的愛犬！\n來俱樂部看看哩哩曬可愛小咖 >///<',
-    },
-    {
-      portrait: 'battle_currycat_opponent_face_normal',
-      text: '哩哩手工力超厲害會做手工藝品！\n也很會吵架千萬不能惹她生氣！\n超感謝哩哩做超好看實用電子書小包給我！',
-    }
-  ],
-  pachin: [
-    {
-      portrait: 'battle_afk_self_face_normal',
-      text: '爬慶狗是俱樂部的神秘人物！\n沒人見過他的長相超神秘！',
-    },
-    {
-      portrait: 'battle_currycat_opponent_face_normal',
-      text: '講話很幽默但常常講假話！\n真的會來台創祭嗎？',
-    }
-  ],
-  hudeijun: [
-    {
-      portrait: 'battle_afk_self_face_normal',
-      text: '小蝶是打烊後俱樂部小老師（？',
-    },
-    {
-      portrait: 'battle_currycat_opponent_face_normal',
-      text: '連經濟學問題都難不倒她！\n有問題就找聰明的小蝶老師！',
-    }
-  ],
-  fast: [
-    {
-      portrait: 'battle_afk_self_face_normal',
-      text: '還要更快是俱樂部成員之一！\n雖然手拿著雙刀，但更喜歡被BBB大劍砍！',
-    },
-    {
-      portrait: 'battle_currycat_opponent_face_normal',
-      text: '超滿意我畫的阿快8bit版本！有夠喜歡！',
-    }
-  ],
-  pumpkin: [
-    {
-      portrait: 'battle_afk_self_face_normal',
-      text: '她們是小魔女龐淇和小幽靈們！\n創作者是實況主兼插畫家R菜！',
-    },
-    {
-      portrait: 'battle_currycat_opponent_face_normal',
-      text: '我超喜歡R菜的畫圖風格！每次看都覺得療癒又可愛！',
-    }
-  ],
-  p13p04: [
-    {
-      portrait: 'battle_afk_self_face_normal',
-      text: '問問是俱樂部的實況主兼插畫家之一！\n常在無迪時間會開台工作線上陪大家聊天！',
-    },
-    {
-      portrait: 'battle_currycat_opponent_face_normal',
-      text: '會分享有趣的創作工作甘苦談！\n也很會跟觀眾聊天！快去追蹤他！',
-    }
-  ],
-  ai4vupwjp: [
-    {
-      portrait: 'battle_afk_self_face_normal',
-      text: 'ㄐㄎ是為大家換水的水媽！\n也很喜歡玩魂系遊戲！\n一起連動魂系遊戲靠他罩！',
-    },
-    {
-      portrait: 'battle_currycat_opponent_face_normal',
-      text: '最近也很會放閃撒糖給大家！',
-    }
-  ],
+const continueDialogue = [{
+  portrait: 'battle_afk_self_face_normal',
+  text: '你要繼續挑戰嗎？'
+}]
+
+const finishingDialogue = [{
+  portrait: 'battle_afk_self_face_normal',
+  text: '喜歡這個小遊戲嗎？\n歡迎給我回饋！\n歡迎追蹤貞尼鹹粥！加入貞貞俱樂部！\n88888！'
+}];
+
+const continueList = ['換人挑戰', '關於遊戲', '離開'];
+
+function getActionList() {
+  const actionOptions = ['行動', '恢復', '你是誰'];
+  const secretActionOptions = ['行動', '恢復', '你是誰', '換人挑戰'];
+  return isSecretMode ?  secretActionOptions : actionOptions;
 }
 
-const promoteContent = '喜歡這個小遊戲嗎？\n歡迎加入貞貞俱樂部！'
-
-const actionOptions = ['行動', '你是誰', '你是誰'];
-const finishingOptions = ['繼續戰鬥', '關於遊戲', '離開'];
-const battleListOptions = [
-  { text: '安迪', value: 'jennie' },
-  { text: '貝貝', value: 'beibei' },
-  { text: '上上', value: 'shangshang' },
-  { text: '貓辣妹', value: 'maoramei' },
-  { text: '咖哩貓', value: 'currycat' },
-  { text: 'ㄐㄎ', value: 'ai4vupwjp' },
-  { text: '小咖', value: 'ka' },
-  { text: '搭拉', value: 'dara' },
-  { text: '還要更快', value: 'fast' },
-  { text: '是小蝶', value: 'hudeijun' },
-  { text: '問問', value: 'p13p04' },
-  { text: '爬慶狗', value: 'pachin' },
-  { text: '龐琪', value: 'pumpkin' },
-  { text: 'BBB', value: 'bbb' },
-  { text: '橙踏青', value: 'touching' },
+const basicBattleList = [
+{ text: '安迪', value: 'jennie' },
+{ text: '貝貝', value: 'beibei' },
+{ text: '上上', value: 'shangshang' },
+{ text: '貓辣妹', value: 'maoramei' },
+{ text: '咖哩貓', value: 'currycat' }
 ];
-
-let recoverCount = 0;
-
-function getCurrentOptions() {
-  const menu = [...actionOptions];
-  if (recoverCount === 0) {
-    menu.push('休息');
-  }
-  return menu;
+const secretBattleList = [
+{ text: 'ㄐㄎ', value: 'ai4vupwjp' },
+{ text: '小咖', value: 'ka' },
+{ text: '搭拉', value: 'dara' },
+{ text: '還要更快', value: 'fast' },
+{ text: '是小蝶', value: 'hudeijun' },
+{ text: '問問', value: 'p13p04' },
+{ text: '爬慶狗', value: 'pachin' },
+{ text: '龐琪', value: 'pumpkin' },
+{ text: 'BBB', value: 'bbb' },
+{ text: '橙踏青', value: 'touching' },
+];
+function getBattleList() {
+  return isSecretMode ?
+    [
+      ...basicBattleList.map(({ text }) => text),
+      ...secretBattleList.map(({ text }) => text)
+    ]
+    :
+    basicBattleList.map(({ text }) => text);
 }
+
+let isAllowRecover = true;
+let isSecretModeReady = false;
+let isSecretMode = false;
 
 export default class Battle extends Scene {
   opponentName: string = 'default';
@@ -278,6 +163,18 @@ export default class Battle extends Scene {
     EventBus.on('game-up-keydown', () => {this.handleControlButton('up')})
     EventBus.on('game-down-keydown', () => this.handleControlButton('down'))
     EventBus.on('game-select-keydown', () => this.handleControlButton('space'))
+
+    EventBus.on('game-preinput-secret-mode', () => {
+      isSecretModeReady = true;
+    })
+    EventBus.on('game-input-secret-mode', () => {
+      isSecretMode = true;
+      isSecretModeReady = false;
+      this.handleStartSecretMode();
+    })
+    EventBus.on('game-cancel-secret-mode', () => {
+      isSecretModeReady = false;
+    })
     
     // default hide status board
     this.self.hideBoard();
@@ -290,7 +187,7 @@ export default class Battle extends Scene {
 
     // init Menu
     this.menu = new Menu(this, {
-      actions: [...actionOptions]
+      actions: []
     });
     this.menu.init();
     this.menu.hideMenu();
@@ -321,11 +218,16 @@ export default class Battle extends Scene {
       const { effect, dialog: actionDialog } = actionResult;
       
       if (!effect) return;
-      const { type, target, value } = effect;
+      const { type, target } = effect;
+      let { value } = effect;
       await this.dialogue!.runDialogue(actionDialog);
   
       // reaction movement
       const sufferCharacter = target === 'self' ? this.self : this.opponent;
+
+      if (target === 'opponent' && isSecretMode) {
+        value = value * 2;
+      }
       const reactionResult = await sufferCharacter!.runReaction(type, value || 0);
   
       if (!reactionResult) return;
@@ -347,7 +249,8 @@ export default class Battle extends Scene {
         const { dialog: loserDialog } = loseResult;
         await this.dialogue!.runDialogue(loserDialog);
   
-        this.handleFinishGame();
+        const isSelfWin = from === 'self';
+        this.handleFinishGame(isSelfWin);
         return;
       }
       else {
@@ -376,7 +279,7 @@ export default class Battle extends Scene {
     const { dialog: sufferDialog } = reactionResult;
     await this.dialogue!.runDialogue(sufferDialog);
 
-    recoverCount += 1;
+    isAllowRecover = false;
     this.handleSelectAction();
   }
 
@@ -391,11 +294,13 @@ export default class Battle extends Scene {
       text: '你要跟誰戰鬥呢？',
     }]);
 
-    this.menu?.setActions(battleListOptions.map(({ text }) => text));
+    const list = getBattleList();
+    this.menu?.setActions(list);
     this.menu?.showMenu();
   }
 
   private async handleControlButton(key: 'up' | 'down' | 'space') {
+    if (isSecretModeReady) return;
     if (key === 'up') {
       this.menu?.prevAction();
     } else if (key === 'down') {
@@ -407,31 +312,35 @@ export default class Battle extends Scene {
         if (menuAction === '行動') {
           await this.applyAttackTurn();
         }
-        else if (menuAction === '休息') {
-          await this.applyRecoverTurn();
+        else if (menuAction === '恢復') {
+          if (isAllowRecover || isSecretMode) {
+            await this.applyRecoverTurn();
+          }
+          else {
+            await this.dialogue!.runDialogue([{
+              portrait: 'battle_afk_self_face_normal',
+              text: '每次對戰我只能小睡一次...\n現在很有精神！',
+            }]);
+            this.menu?.showMenu();
+          }
         }
         else if (menuAction === '你是誰') {
           await this.applyTalking();
         }
         else if (menuAction === '關於遊戲') {
-          await this.dialogue!.runDialogue([{
-            portrait: 'battle_afk_self_face_normal',
-            text: '這是咖哩貓做的貞貞俱樂部二創小遊戲\n滿足小小的想做遊戲的願望\n希望你有喜歡！',
-          }]);
+          await this.dialogue!.runDialogue(aboutDialogue);
           this.menu?.showMenu();
         }
         else if (menuAction === '離開') {
-          await this.dialogue!.runDialogue([{
-            portrait: 'battle_afk_self_face_normal',
-            text: '88888888',
-          }]);
+          await this.dialogue!.runDialogue(finishingDialogue);
           sceneFinisher(this);
         }
-        else if (menuAction === '繼續戰鬥') {
+        else if (menuAction === '換人挑戰') {
+          isAllowRecover = true;
           await this.continueGame();
         }
-        else if (battleListOptions.map(({ text }) => text).includes(menuAction)) {
-          const result = battleListOptions.find(({ text }) => text === menuAction);
+        else if (basicBattleList.map(({ text }) => text).includes(menuAction)) {
+          const result = basicBattleList.find(({ text }) => text === menuAction);
           if (result) {
             this.restartBattle(result.value);
           }
@@ -459,18 +368,28 @@ export default class Battle extends Scene {
       portrait: 'battle_afk_self_face_normal',
       text: '要做什麼呢？',
     }]);
-    const currentOptions = getCurrentOptions();
-    console.log({ currentOptions })
-    this.menu?.setActions(currentOptions);
+    const list = getActionList();
+    this.menu?.setActions(list);
     this.menu?.showMenu();
   }
 
-  private async handleFinishGame() {
-    await this.dialogue!.runDialogue([{
+  private async handleStartSecretMode() {
+    this.menu?.hideMenu();
+    await this.dialogue?.runDialogue([{
       portrait: 'battle_afk_self_face_normal',
-      text: promoteContent,
-    }])
-    this.menu?.setActions(finishingOptions);
+      text: '你發現了秘技！\n現在可以無限次恢復！攻擊力2倍！\n並且解鎖全人物挑戰！',
+    }]);
+    const list = getActionList();
+    this.menu?.setActions(list);
+    this.menu?.showMenu();
+  }
+
+  private async handleFinishGame(isWin: boolean) {
+    if (isWin) {
+      await this.dialogue!.runDialogue(winDialogue);
+    }
+    await this.dialogue!.runDialogue(continueDialogue);
+    this.menu?.setActions(continueList);
     this.menu?.showMenu();
   }
 
@@ -501,15 +420,17 @@ export default class Battle extends Scene {
     // show status board for both
     this.self?.showBoard()
     this.opponent?.showBoard()
-
   }
   shutdown() {
     this.menu?.destroy();
     this.keyboardHandler?.destroy();
     this.opponent!.destroy();
     this.self!.destroy();
-    EventBus.off('game-up-keydown')
-    EventBus.off('game-down-keydown')
-    EventBus.off('game-select-keydown')
+    EventBus.off('game-up-keydown');
+    EventBus.off('game-down-keydown');
+    EventBus.off('game-select-keydown');
+    EventBus.off('game-preinput-secret-mode');
+    EventBus.off('game-input-secret-mode');
+    EventBus.off('game-cancel-secret-mode');
   }
 }

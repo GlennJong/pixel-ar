@@ -9,9 +9,15 @@ function App() {
   const [inputs, setInputs] = useState<string[]>([]);
 
   useEffect(() => {
-    if (inputs.length < 10) return;
-    if (inputs.join('') === '^^vv<><>BA') {
-      // EventBus.emit('game-secret-mode');
+    if (inputs.length < 9) return;
+    if (inputs.slice(-9).join('') === '^^vv<><>B') {
+      EventBus.emit('game-preinput-secret-mode');
+    }
+    else if (inputs.slice(-10).join('') === '^^vv<><>BA') {
+      EventBus.emit('game-input-secret-mode');
+    }
+    else {
+      EventBus.emit('game-cancel-secret-mode');
     }
   }, [inputs])
   
