@@ -736,7 +736,7 @@
       { "prefix": "face_sad", "qty": 1, "freq": 1, "repeat": 0 }
     ],
     "base": {
-      "max_hp": 120,
+      "max_hp": 110,
       "name": "BBB"
     },
     "actions": {
@@ -2426,7 +2426,7 @@
       },
       "recover": {
         "animation": "recover",
-        "priority": 1,
+        "priority": 0,
         "dialogues": [
           {
             "dialog": [
@@ -2436,7 +2436,7 @@
               },
               {
                 "portrait": "battle_afk_self_face_normal",
-                "text": "休息一下！"
+                "text": "小睡一下！"
               }
             ],
             "priority": 2
